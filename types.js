@@ -16,6 +16,17 @@ you
 pretty
 
 
-things`
+things`;
 // Backticks also preserve any line breaks you have in your code.
 
+const hello = `Hello, my name is ${name}. Nice to meet you! I have ${392 + 84} My Little Ponies! This sure is a normal way to start a converstion, huh?`;
+// And they allow string interoplation. Backticks sure are swell!
+
+const html = `
+<div>
+    <h2>${name}</h2>
+    <p>${hello}</p>
+</div>
+`;
+document.body.innerHTML = html;
+console.log(html);
