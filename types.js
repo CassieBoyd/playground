@@ -30,3 +30,17 @@ const html = `
 `;
 document.body.innerHTML = html;
 console.log(html);
+
+
+// ********************** NUMBERS **********************************
+
+const age = 89; //Can type typeof followed by the variable name in the console to see data type
+
+const a = 2;
+const b = 9;
+
+const smarties = 20;
+const kids = 3;
+const eachKidGets = Math.floor(smarties / kids);
+const momGets = smarties % kids;
+console.log(`Each kid gets ${eachKidGets}, mom gets ${momGets}`);
