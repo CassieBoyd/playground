@@ -42,5 +42,15 @@ const b = 9;
 const smarties = 20;
 const kids = 3;
 const eachKidGets = Math.floor(smarties / kids);
-const momGets = smarties % kids;
+const momGets = smarties % kids; //Modulo returns remainder after division
 console.log(`Each kid gets ${eachKidGets}, mom gets ${momGets}`);
+
+const power = 10 ** 2; // ** is equivalent to ^ or "to the power of" So cool! 
+
+// ********************* OBJECTS **************************************
+
+const person = {
+    first: "Cassie",
+    last: "Bacon",
+    age: 90
+};
