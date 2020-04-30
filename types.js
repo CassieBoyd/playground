@@ -54,3 +54,17 @@ const person = {
     last: "Bacon",
     age: 90
 };
+
+// **************** NULL & UNDEFINED **************************************
+
+let cat; // Will return Undefined until assigned a value
+console.log(cat);
+cat = "Casper";
+
+const somethingNull = null; // Has to be set to null in order to return null
+
+const alice = {
+    first: "alice",
+    last: null,
+    address: "Wonderland"
+};
