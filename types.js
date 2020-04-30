@@ -30,3 +30,41 @@ const html = `
 `;
 document.body.innerHTML = html;
 console.log(html);
+
+
+// ********************** NUMBERS **********************************
+
+const age = 89; //Can type typeof followed by the variable name in the console to see data type
+
+const a = 2;
+const b = 9;
+
+const smarties = 20;
+const kids = 3;
+const eachKidGets = Math.floor(smarties / kids);
+const momGets = smarties % kids; //Modulo returns remainder after division
+console.log(`Each kid gets ${eachKidGets}, mom gets ${momGets}`);
+
+const power = 10 ** 2; // ** is equivalent to ^ or "to the power of" So cool! 
+
+// ********************* OBJECTS **************************************
+
+const person = {
+    first: "Cassie",
+    last: "Bacon",
+    age: 90
+};
+
+// **************** NULL & UNDEFINED **************************************
+
+let cat; // Will return Undefined until assigned a value
+console.log(cat);
+cat = "Casper";
+
+const somethingNull = null; // Has to be set to null in order to return null
+
+const alice = {
+    first: "alice",
+    last: null,
+    address: "Wonderland"
+};
