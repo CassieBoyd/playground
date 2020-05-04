@@ -90,5 +90,7 @@ console.log(max);
 const float = parseFloat("343.24234"); // Converts strings to numbers with decimals
 console.log(float); // In console, run typeOf on variable to confirm it's a number
 
-const int = parseInt("324.32423") // Also converts from string to number but returns only the numbers to the left to the decimal
+const int = parseInt("324.32423") // Also converts from string to number but returns only the numbers to the left to the decimal without rounding up or down
 console.log(int)
+
+console.log(Date.now()) // Returns milliseconds since 1/1/70
