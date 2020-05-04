@@ -68,3 +68,16 @@ const alice = {
     last: null,
     address: "Wonderland"
 };
+
+// ******************* BOOLEANS & EQUALITY ********************************
+
+let isDrawing = false;
+let currentAge = 18;
+const ofAge = currentAge > 19;
+console.log(ofAge); // Returns false
+
+currentAge = 100;
+let currentAge2 = 40;
+
+// === checks that both value and type are equivalent
+// == only checks value so "10" == 10 would evaluate to true
