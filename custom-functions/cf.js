@@ -2,9 +2,9 @@ console.log("It works!")
 
 
 
-function calculateBill(bill, taxRate) {
+function calculateBill(bill, taxRate = 0.13, tipRate = 0.15) {
     console.log("Running Calculate Bill!")
-    const total = bill * (1 + taxRate);
+    const total = bill + bill * taxRate + bill * tipRate;
     // console.log("Console Log", total);
     return total;
 }
@@ -27,8 +27,9 @@ console.log(greeting)
 
 const myTotal3 = calculateBill(20 + 20 + 30 + 78, 0.15)
 
-function doctorize(name) {
-    return `Dr. ${name}`;
+// Can add default values in case a value was not provided, can also be an empty string.
+function doctorize(name = "Who") {
+    return `Doctor ${name}`;
 }
 
 function yell(name) {
@@ -36,3 +37,7 @@ function yell(name) {
 }
 
 console.log(yell(doctorize("Cassie")));
+
+// To make a function fall back on a default argument, pass "undefined" in its place.
+const myBill = calculateBill(123.43, undefined, 0.2);
+console.log("My Bill", myBill)
