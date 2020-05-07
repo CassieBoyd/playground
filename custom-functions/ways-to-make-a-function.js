@@ -17,3 +17,18 @@ console.log("It's working");
 
 // Arrow function with implicit return. Can remove parentheses if there is only one argument
 const inchToCM = inches => inches * 2.54;
+
+// function add(a, b = 3) {
+//     const total = a + b;
+//     return total;
+// }
+
+const add = (a, b = 3) => a + b;
+
+// Side note: Hitting option and the equal sign gives the does not equal sign ≠. Discovered this just now while trying to get a plus sign and hitting option instead of shift because I probably need caffeine. Happy little accidents.
+
+// Returning an object
+
+function makeABaby (first, last) {
+    
+}
