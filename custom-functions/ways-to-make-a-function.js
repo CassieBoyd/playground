@@ -28,7 +28,49 @@ const add = (a, b = 3) => a + b;
 // Side note: Hitting option and the equal sign gives the does not equal sign ≠. Discovered this just now while trying to get a plus sign and hitting option instead of shift because I probably need caffeine. Happy little accidents.
 
 // Returning an object
-
-function makeABaby (first, last) {
-    
+const makeABaby = (first, last) => {
+    const baby = {
+        name: `${first} ${last}`,
+        age: 0
+    }
+    return baby;
 }
+
+// Have to put parentheses around function definition to implicitly return an object
+const makeABaby2 = (first, last) => ({name: `${first} ${last}`,
+age: 0})
+
+// IIFE Immediately Invoked Function Expression. Parentheses run first in JS
+(function() {
+    console.log(`Running the Anon function`);
+    return `You are cool`;
+})();
+
+// Methods
+const cassie = {
+    name: "Cassie Boyd",
+    sayHi: function() {
+        console.log(`Hi, Cassie`);
+        return `Hey Cassie`;
+    },
+    // Shorthand method
+    yellHi() {
+        console.log("HEY CASSIE")
+    },
+    // Arrow function
+    whisperHi: () => {console.log("hiii"); return "return"}
+}
+
+// Callback functions- waits for an event such as a click to run
+// Click callback
+const button = document.querySelector(".clickMe")
+
+button.addEventListener("click", cassie.yellHi)
+
+// Timer callback- takes a function to call and a duration in milliseconds
+setTimeout(cassie.yellHi, 1000);
+
+// Can also be gat arrow
+setTimeout(() => {
+    console.log("Time to eat!")
+}, 1000);
