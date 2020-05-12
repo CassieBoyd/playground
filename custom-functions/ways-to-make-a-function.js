@@ -70,7 +70,7 @@ button.addEventListener("click", cassie.yellHi)
 // Timer callback- takes a function to call and a duration in milliseconds
 setTimeout(cassie.yellHi, 1000);
 
-// Can also be gat arrow
+// Can also be fat arrow
 setTimeout(() => {
     console.log("Time to eat!")
 }, 1000);
