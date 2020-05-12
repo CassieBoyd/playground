@@ -11,6 +11,7 @@ const people = [
   // Console Methods
   console.table(people);
   
+  
   // Callstack
   
   // Grabbing Elements
