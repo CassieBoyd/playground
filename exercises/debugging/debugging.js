@@ -4,20 +4,24 @@ const people = [
     { name: 'Snickers', cool: false, country: 'Dog Country' },
   ];
   
-  people.forEach((person, index) => {
-    console.group(`${person.name}`); // .groupCollapsed for auto collapsing
-    console.log(person.country);
-    console.log(person.cool);
-    console.log("Done!");
-    console.groupEnd(`${person.name}`);
-  });
+  // people.forEach((person, index) => {
+  //   console.group(`${person.name}`); // .groupCollapsed for auto collapsing
+  //   console.log(person.country);
+  //   console.log(person.cool);
+  //   console.log("Done!");
+  //   console.groupEnd(`${person.name}`);
+  // });
   
+  people.forEach((person, index) => {
+    //debugger; //can also click line in source tab on dev tools to add breakpoint
+    console.log(`${person.name}`);
+  });
+
   // Console Methods
   console.table(people);
 
-
-  
   // Callstack
+  // Stack trace- what function called what function called what function
   
   // Grabbing Elements
   
