@@ -14,3 +14,19 @@ function go() {
 
 console.log(age);
 //console.log(hair); // Can't access outside the function it was defined in
+
+// Block scope
+function isCool(name) {
+    let cool; //Initialized but not defined
+    if (name === "Cassie") {
+        cool = true; //Updated
+    }
+    console.log(cool);
+    return cool;
+}
+
+if (1 === 1) {
+    const cool = true;
+}
+
+//console.log(cool);
