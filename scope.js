@@ -30,3 +30,25 @@ if (1 === 1) {
 }
 
 //console.log(cool);
+
+const dog = "snickers";
+
+function logDog() {
+    console.log(dog);
+}
+
+function goDog() {
+    const dog = "sunny";
+    logDog();
+}
+
+goDog(); //Will log snickers because even though logDog is called in goDog where dog = sunny, where logDog is defined there is no dog defined in the scope of that function so it looks up to the next level outside itself and finds snickers. 
+
+function sayHi(name) {
+    function yell() {
+        console.log(name.toUpperCase())
+    }
+    yell();
+}
+
+//yell(); //Will not work because yell isn't available outside of the sayHi function.
