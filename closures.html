@@ -32,6 +32,20 @@
         console.log(sayHello("Cassie"));
         console.log(sayHello("Ken"));
         console.log(sayHey("Peach"));
+
+
+        function createGame(gameName) {
+            let score = 0;
+            return function win() {
+                score++;
+                return `Your name ${gameName} score is ${score}`;
+            }
+        }
+
+        const hockeyGame = createGame("Hockey");
+        const marioCart = createGame("Mario Cart");
+        
     </script>
+    <!-- hockeyGame and marioCart will both have their own private score variables allowing scores to be kept for different games -->
 </body>
 </html>
