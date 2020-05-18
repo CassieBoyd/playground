@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Closures- ability to access parent-level scope from child scope even after the parent function has been terminated -->
+    <script>
+        function outer() {
+            const outerVar = "Hey. I'm an outer var";
+            function inner() {
+                const innerVar = "I'm an inner var";
+                console.log(innerVar);
+                console.log(outerVar);
+            }
+            return inner;
+        }
+
+        const innerFn = outer();
+
+        function createGreeting(greeting = "") {
+            const myGreet = greeting.toUpperCase();
+            return function (name) {
+                return `${myGreet}, ${name}`;
+            }
+        }
+
+        const sayHello = createGreeting("Hello");
+        const sayHey = createGreeting("Hey");
+        console.log(sayHello("Cassie"));
+        console.log(sayHello("Ken"));
+        console.log(sayHey("Peach"));
+
+
+        function createGame(gameName) {
+            let score = 0;
+            return function win() {
+                score++;
+                return `Your name ${gameName} score is ${score}`;
+            }
+        }
+
+        const hockeyGame = createGame("Hockey");
+        const marioCart = createGame("Mario Cart");
+        
+    </script>
+    <!-- hockeyGame and marioCart will both have their own private score variables allowing scores to be kept for different games -->
+</body>
+</html>
