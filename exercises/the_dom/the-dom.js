@@ -20,3 +20,8 @@ console.log(pizzaList.textContent);
 
 //pizzaList.textContent = `${pizzaList.textContent} 🍕`;
 pizzaList.insertAdjacentText("beforeend", "🍕"); //Tacks pizza emoji to end of element
+
+// ***************CLASSES*******************************
+const pic = document.querySelector(".nice");
+pic.classList.add("open");
+console.log(pic.classList); //.classList lists all the classes associated with selected element
