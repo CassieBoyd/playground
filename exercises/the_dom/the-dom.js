@@ -33,7 +33,7 @@ function toggleRound() {
 
 pic.addEventListener("click", toggleRound);
 
-pic.alt = "Cute Puppy"; //Setter
+pic.alt = "Cute Cat"; //Setter
 console.log("Pic Alt:", pic.alt); //Getter
 //pic.width= 300;
 
@@ -41,3 +41,7 @@ console.log("Pic Alt:", pic.alt); //Getter
 pic.addEventListener("load", function() {
     console.log(pic.naturalWidth);
 });
+
+pic.setAttribute("alt", "Super Cute Cat");
+console.log(pic.getAttribute("alt"));
+
