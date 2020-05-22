@@ -32,3 +32,12 @@ function toggleRound() {
 }
 
 pic.addEventListener("click", toggleRound);
+
+pic.alt = "Cute Puppy"; //Setter
+console.log("Pic Alt:", pic.alt); //Getter
+//pic.width= 300;
+
+// Event listener waits for image to load then logs the width to the console. Without the event listener it would log 0 because the console.log would run before the picture had a chance to load.
+pic.addEventListener("load", function() {
+    console.log(pic.naturalWidth);
+});
