@@ -14,5 +14,31 @@ const myDiv = document.createElement("div");
 myDiv.classList.add("wrapper");
 console.log(myDiv);
 
+
 document.body.appendChild(myDiv);//Adds a node to the end of specified parent node
-myDiv.appendChild(myParagraph);
+myDiv.appendChild(myParagraph);//Puts p tag inside div tag
+myDiv.appendChild(myImage);//Puts img tag inside div tag
+//The above method causes the DOM to "reflow" multiple times. Fix this by moving line 18 below 19 and 20. This appends the DOM all at once instead of 3 times in a row.
+
+const heading = document.createElement("h2");
+heading.textContent = "Cool things";
+myDiv.insertAdjacentElement("beforebegin", heading);//Inserts heading element before myDiv
+
+// EXERCISE: create unordered list with 5 items in it using methods from this lesson. Start with three.
+const list = document.createElement("ul");
+const three = document.createElement("li");
+three.textContent = "THREE";
+list.appendChild(three);
+const two = document.createElement("li");
+two.textContent = "two";
+three.insertAdjacentElement("beforebegin", two);
+const one = document.createElement("li");
+one.textContent = "ONE";
+list.insertAdjacentElement("afterbegin", one);
+const four = document.createElement("li");
+four.textContent = "four";
+three.insertAdjacentElement("afterend", four);
+const five = document.createElement("li");
+five.textContent = "FIVE";
+list.insertAdjacentElement("beforeend", five);
+console.log(list);
