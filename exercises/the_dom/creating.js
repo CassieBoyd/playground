@@ -42,3 +42,8 @@ const five = document.createElement("li");
 five.textContent = "FIVE";
 list.insertAdjacentElement("beforeend", five);
 console.log(list);
+
+document.body.appendChild(list);
+
+//const li1 = li5.cloneNode(true);//.cloneNode creates a copy of li5 and true passes child nodes as well to access the text. Also, this method was NOT PART OF THE LESSON, WES. I have my eye on you.
+//li1.textContent = "one";
