@@ -68,7 +68,7 @@ function generatePlayerCard(name, age, height) {
     return `
     <div class="playerCard">
        <h2>${name} — ${age}</h2>
-       <p>They are ${height} and ${age} years old. In Dog years this person would be AGEINDOGYEARS. That would be a tall dog!</p>
+       <p>They are ${height} tall and ${age} years old. In Dog years this person would be ${age * 7}. That would be a tall dog!</p>
     </div>
     `
 }
@@ -80,6 +80,8 @@ function generatePlayerCard(name, age, height) {
 // </div>
 
 // make a new div with a class of cards
+const cardDiv = document.body.createElement("div");
+cardDiv.classList.add("cards");
 
 // Have that function make 4 cards
 
