@@ -27,12 +27,22 @@ unordered.insertAdjacentElement("beforeend", three);
 aDiv.appendChild(unordered);
 
 // create an image
+const anImage = document.createElement("img");
 
 // set the source to an image
+anImage.src = "https://picsum.photos/500";
+
 // set the width to 250
+anImage.width = 250;
+
 // add a class of cute
+anImage.classList.add("cute");
+
 // add an alt of Cute Puppy
+anImage.alt = "Cute Puppy";
+
 // Append that image to the wrapper
+aDiv.appendChild(anImage);
 
 // with HTML string, make a div, with two paragraphs inside of it
 // put this div before the unordered list from above
