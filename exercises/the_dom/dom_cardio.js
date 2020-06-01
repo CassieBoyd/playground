@@ -46,22 +46,32 @@ aDiv.appendChild(anImage);
 
 // with HTML string, make a div, with two paragraphs inside of it
 const htmlString = `
-    <div>
-        <p></p>
-        <p></p>
+    <div class="htmldiv">
+        <p>Some text.</p>
+        <p>More text.</p>
     </div>
 `;
 console.log("htmlString is: ", typeof(htmlString));
 
 // put this div before the unordered list from above
-const transform = document.createRange().createContextualFragment(htmlString);
-console.log("transform is: ", typeof(transform))
-document.body.insertAdjacentHTML("afterbegin", transform);
+unordered.insertAdjacentHTML("beforebegin", htmlString);
 
 // add a class to the second paragraph called warning
+const htmlDiv = aDiv.querySelector(".htmldiv"); //Added a class to the div in htmlString so it could be selected here and put into a variable
+htmlDiv.children[1].classList.add("warning");//.children accesses the child elements of addClass by their index. .classList.add is then called on the 1 index to add a class of "warning"
+
 // remove the first paragraph
+htmlDiv.firstElementChild.remove();
 
 // create a function called generatePlayerCard that takes in three arguments: name, age, and height
+function generatePlayerCard(name, age, height) {
+    return `
+    <div class="playerCard">
+       <h2>${name} — ${age}</h2>
+       <p>They are ${height} and ${age} years old. In Dog years this person would be AGEINDOGYEARS. That would be a tall dog!</p>
+    </div>
+    `
+}
 
 // have that function return html that looks like this:
 // <div class="playerCard">
