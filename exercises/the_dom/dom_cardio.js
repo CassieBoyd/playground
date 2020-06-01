@@ -45,7 +45,18 @@ anImage.alt = "Cute Puppy";
 aDiv.appendChild(anImage);
 
 // with HTML string, make a div, with two paragraphs inside of it
+const htmlString = `
+    <div>
+        <p></p>
+        <p></p>
+    </div>
+`;
+console.log("htmlString is: ", typeof(htmlString));
+
 // put this div before the unordered list from above
+const transform = document.createRange().createContextualFragment(htmlString);
+console.log("transform is: ", typeof(transform))
+document.body.insertAdjacentHTML("afterbegin", transform);
 
 // add a class to the second paragraph called warning
 // remove the first paragraph
