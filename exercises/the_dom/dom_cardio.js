@@ -10,9 +10,21 @@ aDiv.classList.add("wrapper");
 document.body.appendChild(aDiv);
 
 // make an unordered list
+const unordered = document.createElement("ul");
 
 // add three list items with the words "one, two three" in them
+const one = document.createElement("li");
+one.textContent = "One";
+unordered.insertAdjacentElement("afterbegin", one);
+const two = document.createElement("li");
+two.textContent = "Two";
+one.insertAdjacentElement("afterend", two);
+const three = document.createElement("li");
+three.textContent = "Three";
+unordered.insertAdjacentElement("beforeend", three);
+
 // put that list into the above wrapper
+aDiv.appendChild(unordered);
 
 // create an image
 
