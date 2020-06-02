@@ -80,10 +80,13 @@ function generatePlayerCard(name, age, height) {
 // </div>
 
 // make a new div with a class of cards
-const cardDiv = document.body.createElement("div");
+const cardDiv = document.createElement("div");
 cardDiv.classList.add("cards");
 
 // Have that function make 4 cards
+const cards = generatePlayerCard("Cassie", 80, 120);
+
+console.log(cards);
 
 // append those cards to the div
 // put the div into the DOM just before the wrapper element
