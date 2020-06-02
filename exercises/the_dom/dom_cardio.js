@@ -103,8 +103,10 @@ aDiv.insertAdjacentElement("beforebegin", cardDiv);
 // select all the buttons!
 const buttons = document.querySelectorAll(".delete");
 // make out delete function
-function deleteCard() {
+function deleteCard(event) {
+    const clickedButton = event.currentTarget;
+    clickedButton.parentElement.remove();
     console.log("deleteCard ran")
 }
 // loop over them and attach a listener
-buttons.forEach(button => button.addEventListener("click", deleteCard))
+buttons.forEach(button => button.addEventListener("click", deleteCard));
