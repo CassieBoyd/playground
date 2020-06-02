@@ -84,12 +84,19 @@ const cardDiv = document.createElement("div");
 cardDiv.classList.add("cards");
 
 // Have that function make 4 cards
-const cards = generatePlayerCard("Cassie", 80, 120);
-
+let cards = generatePlayerCard("Cassie", 80, 120);
+cards += generatePlayerCard("Ken", 82, 150);
+cards += generatePlayerCard("Peach", 9, 30);
+cards += generatePlayerCard("Autumn", 18, 30);
 console.log(cards);
 
 // append those cards to the div
+cardDiv.append(cards);
+
 // put the div into the DOM just before the wrapper element
+cardDiv.innerHTML = cards;
+aDiv.insertAdjacentElement("beforebegin", cardDiv);
+
 // Bonus, put a delete Button on each card so when you click it, the whole card is removed
 
 // select all the buttons!
