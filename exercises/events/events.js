@@ -33,11 +33,24 @@ const buyButtons = document.querySelectorAll("button.buy");
 console.log(buyButtons);
 
 function handleBuyButtonClick(event) {
-    console.log("Bought");
+    // console.log("Bought");
+    // console.log(parseFloat(event.target.dataset.price));
+    console.log("Target", event.target);
+    console.log("Current Target", event.currentTarget);
+    console.log(event.target === event.currentTarget);
+    // To stop event from bubbling up to window event listener
+    event.stopPropagation();
 }
 
 buyButtons.forEach(function(buyButton) {
     buyButton.addEventListener("click", handleBuyButtonClick);
+})
+
+// Propagation- triggering multiple functions with one click. Event bubbles up through the nesting to the top element that has a listener. Can be prevented with event.stopPropagation() on the nested event listener.
+
+window.addEventListener("click", function() {
+    console.log("Window was clicked");
+    console.log(event.target);
 })
 
 // function buyItem() {
