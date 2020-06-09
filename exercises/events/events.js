@@ -51,7 +51,9 @@ buyButtons.forEach(function(buyButton) {
 window.addEventListener("click", function() {
     console.log("Window was clicked");
     console.log(event.target);
-})
+    // Can also use stopPropagation to stop an event in the capture phase. Not used often.
+    this.event.stopPropagation();
+}, { capture: true })
 
 // function buyItem() {
 //     console.log("Buying item now");
