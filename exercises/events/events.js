@@ -37,7 +37,7 @@ function handleBuyButtonClick(event) {
     // console.log(parseFloat(event.target.dataset.price));
     console.log("Target", event.target);
     console.log("Current Target", event.currentTarget);
-    console.log(event.target === event.currentTarget);
+    console.log("Is equal: ", event.target === event.currentTarget);
     // To stop event from bubbling up to window event listener
     event.stopPropagation();
 }
@@ -51,9 +51,19 @@ buyButtons.forEach(function(buyButton) {
 window.addEventListener("click", function() {
     console.log("Window was clicked");
     console.log(event.target);
+    console.log("Type: ", event.type);
+    console.log("Bubbles: ", event.bubbles);//Tells if stopPropagation has been used
     // Can also use stopPropagation to stop an event in the capture phase. Not used often.
-    this.event.stopPropagation();
-}, { capture: true })
+    //event.stopPropagation();
+}, { capture: true });
+
+const photoEl = document.querySelector(".photo");
+
+// "this" keyword is equal to whatever is to the left of the period. In this case, photoEl. Better to not use this keyword in event listeners.
+photoEl.addEventListener("mouseenter", function(event) {
+    console.log("Current Target: ", event.currentTarget);
+    console.log("This: ", this);
+});
 
 // function buyItem() {
 //     console.log("Buying item now");
