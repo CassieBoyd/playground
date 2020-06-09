@@ -32,15 +32,23 @@ const buyButtons = document.querySelectorAll("button.buy");
 
 console.log(buyButtons);
 
-function buyItem() {
-    console.log("Buying item now");
+function handleBuyButtonClick(event) {
+    console.log("Bought");
 }
 
-function loopOverButtons(singleButton) {
-    singleButton.addEventListener("click", buyItem);
-}
+buyButtons.forEach(function(buyButton) {
+    buyButton.addEventListener("click", handleBuyButtonClick);
+})
 
-buyButtons.forEach(loopOverButtons);
+// function buyItem() {
+//     console.log("Buying item now");
+// }
+
+// function loopOverButtons(singleButton) {
+//     singleButton.addEventListener("click", buyItem);
+// }
+
+// buyButtons.forEach(loopOverButtons);
 
 // Function defined inside
 // buyButtons.forEach(function(buyButton) {
