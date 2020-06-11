@@ -45,6 +45,7 @@ signupForm.name.addEventListener("blur", logEvent);
 
 const photo = document.querySelector(".photo");
 
+// Could also use enter's keycode, 13 in the conditional.
 function handlePhotoClick(event) {
     if(event.type === "click" || event.key === "Enter") {
         console.log("Photo was clicked");
@@ -54,6 +55,7 @@ function handlePhotoClick(event) {
     console.log(event.key);
 }
 
+// Photo has two event listeners so users with and without mouse components have access to the same features.
 photo.addEventListener("click", handlePhotoClick);
 photo.addEventListener("keyup", handlePhotoClick);
 
