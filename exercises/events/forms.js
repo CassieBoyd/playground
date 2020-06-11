@@ -25,3 +25,16 @@ signupForm.addEventListener("submit", function(event) {
         event.preventDefault();
     }
 })
+
+// keyup, keydown, focus, blur
+function logEvent() {
+    console.log(event.type);
+    console.log(event.currentTarget.value);
+}
+signupForm.name.addEventListener("keyup", logEvent);
+signupForm.name.addEventListener("keydown", logEvent);
+
+// Focus- when an input element is tabbed or clicked into
+signupForm.name.addEventListener("focus", logEvent);
+// Blur- when an input element is tabbed or clicked away from
+signupForm.name.addEventListener("blur", logEvent);
