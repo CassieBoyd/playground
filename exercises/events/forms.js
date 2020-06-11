@@ -12,3 +12,16 @@ wes.addEventListener("click", function(event) {
     }
     console.log(shouldChangePage);
 });
+
+
+const signupForm = document.querySelector("[name='signup']");
+
+signupForm.addEventListener("submit", function(event) {
+    //console.dir(event.currentTarget);
+    const name = event.currentTarget.name.value;
+    // .includes is not case-sensitive so chad or Chad will work
+    if (name.includes("chad")) {
+        alert("Sorry");
+        event.preventDefault();
+    }
+})
