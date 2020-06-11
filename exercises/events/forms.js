@@ -38,3 +38,25 @@ signupForm.name.addEventListener("keydown", logEvent);
 signupForm.name.addEventListener("focus", logEvent);
 // Blur- when an input element is tabbed or clicked away from
 signupForm.name.addEventListener("blur", logEvent);
+
+// Use buttons for actions within your application.
+// Links are used to change the page.
+// Don't mix the two.
+
+const photo = document.querySelector(".photo");
+
+// Could also use enter's keycode, 13 in the conditional.
+function handlePhotoClick(event) {
+    if(event.type === "click" || event.key === "Enter") {
+        console.log("Photo was clicked");
+
+    }
+    // Logs which key was pressed while focused on the element.
+    console.log(event.key);
+}
+
+// Photo has two event listeners so users with and without mouse components have access to the same features.
+photo.addEventListener("click", handlePhotoClick);
+photo.addEventListener("keyup", handlePhotoClick);
+
+// Can use keycode.info to get code for particular keys to listen for
