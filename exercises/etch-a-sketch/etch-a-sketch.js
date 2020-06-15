@@ -9,9 +9,21 @@ const ctx = canvas.getContext("2d");
 const shakeButton = document.querySelector(".shake");
 
 // Set up canvas for drawing
-const width = canvas.width;
-const height = canvas.height;
+// const width = canvas.width;
+// const height = canvas.height;
 // console.log(width, height)
+
+// const { width } = canvas;
+// const { height } = canvas;
+
+// Destructuring- make variables called width and height from the same properties on the canvas.
+const { width, height } = canvas;
+console.log(width, height);
+
+// Create random x and y starting points on canvas
+let x = Math.floor(Math.random() * width);
+let y = Math.floor(Math.random() * height);
+
 
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
@@ -19,8 +31,14 @@ ctx.lineWidth = 10;
 
 // Start drawing
 ctx.beginPath();
-ctx.moveTo(200,200);
-ctx.lineTo(200, 200);
+
+// Moves the starting point x px over and y px from top
+ctx.moveTo(x,y);
+
+// Where to draw the line to
+ctx.lineTo(x, y);
+
+// Stroke makes the line from starting point to moveTo point
 ctx.stroke();
 
 // Write a draw function
