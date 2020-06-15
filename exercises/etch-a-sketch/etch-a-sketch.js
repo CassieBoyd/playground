@@ -18,7 +18,7 @@ const shakeButton = document.querySelector(".shake");
 
 // Destructuring- make variables called width and height from the same properties on the canvas.
 const { width, height } = canvas;
-console.log(width, height);
+// console.log(width, height);
 
 // Create random x and y starting points on canvas
 let x = Math.floor(Math.random() * width);
@@ -42,9 +42,21 @@ ctx.lineTo(x, y);
 ctx.stroke();
 
 // Write a draw function
+function draw(options) {
+
+}
 
 // Write a handler for the keys
+function handleKey(event) {
+    if (event.key.includes("Arrow")) {
+        event.preventDefault;
+        draw({ key: event.key });
+        console.log(event.key);
+        console.log("Handling Key");
+    }
+};
 
 // Clear/shake function
 
 // Listen for arrow keys
+window.addEventListener("keydown", handleKey);
