@@ -1,10 +1,13 @@
-console.log("It works");
+//console.log("It works");
 
 // Select the elements on the page: canvas, shake button
 const canvas = document.querySelector("#etch-a-sketch");
 
 // ctx is standard naming convention for context
 const ctx = canvas.getContext("2d");
+
+// All uppercase with underscores means the value is a "true constant" meaning it will never change. Some developers use this convention.
+const MOVE_AMOUNT = 10;
 
 const shakeButton = document.querySelector(".shake");
 
@@ -27,7 +30,7 @@ let y = Math.floor(Math.random() * height);
 
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
-ctx.lineWidth = 10;
+ctx.lineWidth = MOVE_AMOUNT;
 
 // Start drawing
 ctx.beginPath();
@@ -42,17 +45,30 @@ ctx.lineTo(x, y);
 ctx.stroke();
 
 // Write a draw function
-function draw(options) {
+// function draw(options) {
+//     console.log("Options: ", options);
+// }
+function draw({ key }) {
+    console.log(key);
+    // Start path
+    ctx.beginPath();
+    ctx.moveTo(x, y);
 
+    // Move x and y values according to user input
+    x = x - MOVE_AMOUNT;
+    y = y - MOVE_AMOUNT;
+    ctx.lineTo(x, y);
+    ctx.stroke();
 }
 
 // Write a handler for the keys
-function handleKey(event) {
-    if (event.key.includes("Arrow")) {
-        event.preventDefault;
-        draw({ key: event.key });
-        console.log(event.key);
-        console.log("Handling Key");
+// If the pressed key is an arrow key, handleKey calls the draw function and passes the keypress as an object
+function handleKey(e) {
+    if (e.key.includes("Arrow")) {
+        e.preventDefault();
+        draw({ key: e.key });
+        // console.log(e.key);
+        // console.log("Handling Key");
     }
 };
 
