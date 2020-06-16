@@ -7,7 +7,7 @@ const canvas = document.querySelector("#etch-a-sketch");
 const ctx = canvas.getContext("2d");
 
 // All uppercase with underscores means the value is a "true constant" meaning it will never change. Some developers use this convention.
-const MOVE_AMOUNT = 10;
+const MOVE_AMOUNT = 30;
 
 const shakeButton = document.querySelector(".shake");
 
@@ -54,6 +54,7 @@ ctx.stroke();
 function draw({ key }) {
     // Increment hue
     hue = hue + 1;
+    //ctx.strokeStyle = `hsl(${Math.random() * 360}, 50%, 50%)`
     ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
     console.log(key);
     // Start path
@@ -95,6 +96,13 @@ function handleKey(e) {
 };
 
 // Clear/shake function
+function clearCanvas() {
+    canvas.classList.add("shake");
+    canvas.addEventListener("animationend", function() {
+        console.log("Finished shake!")
+        canvas.classList.remove("shake");
+    })
+}
 
 // Listen for arrow keys
 window.addEventListener("keydown", handleKey);
