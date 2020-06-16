@@ -32,6 +32,9 @@ ctx.lineJoin = "round";
 ctx.lineCap = "round";
 ctx.lineWidth = MOVE_AMOUNT;
 
+let hue = 0;
+ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
 // Start drawing
 ctx.beginPath();
 
@@ -49,12 +52,16 @@ ctx.stroke();
 //     console.log("Options: ", options);
 // }
 function draw({ key }) {
+    // Increment hue
+    hue = hue + 1;
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
     console.log(key);
     // Start path
     ctx.beginPath();
     ctx.moveTo(x, y);
 
     // Move x and y values according to user input
+    // Switch statement has different cases according to key press then break out of the switch statement.
     switch (key) {
         case "ArrowUp":
             y = y - MOVE_AMOUNT;
