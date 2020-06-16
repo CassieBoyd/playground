@@ -60,13 +60,13 @@ function draw({ key }) {
             y = y - MOVE_AMOUNT;
             break;
         case "ArrowDown":
-            y = y - MOVE_AMOUNT;
+            y = y + MOVE_AMOUNT;
             break;
         case "ArrowLeft":
-            y = y - MOVE_AMOUNT;
+            x = x - MOVE_AMOUNT;
             break;
         case "ArrowRight":
-            y = y - MOVE_AMOUNT;
+            x = x + MOVE_AMOUNT;
             break;
 
         default:
