@@ -12,7 +12,8 @@ function handleCardButtonClick(event) {
     const desc = card.dataset.description;
     const name = card.querySelector("h2").textContent;
     // Populate the modal with the new info
-    modalInner.innerHTML = `<img src="${imgSrc.replace("200", "600")}" alt="${name}"/>
+    modalInner.innerHTML = `
+    <img width="600" height="600" src="${imgSrc.replace("200", "600")}" alt="${name}"/>
     <p>${desc}</p>
     `;
     // Show the modal
@@ -24,3 +25,17 @@ cardButtons.forEach(button => button.addEventListener("click", handleCardButtonC
 function closeModal() {
     modalOuter.classList.remove("open");
 }
+
+modalOuter.addEventListener("click", function(event) {
+    const isOutside = !event.target.closest(".modal-inner");
+    if (isOutside) {
+        closeModal();
+    }
+    console.log(isOutside)
+})
+
+window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+})
