@@ -28,7 +28,12 @@ const button = document.querySelector(".accept");
 function obCallback(payload) {
     if(payload[0].intersectionRatio === 1) {
         button.disabled = false;
-    }
+        console.log("Removing disabled")
+        // Stop observing button
+        ob.unobserve(terms.lastElementChild);
+    } //else {
+    //     button.disabled = true;
+    // }
     console.log(payload[0].isIntersecting);
 }
 
