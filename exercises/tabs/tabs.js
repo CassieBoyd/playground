@@ -17,8 +17,14 @@ function handleTabClick(e) {
     tabButtons.forEach(tab => {
         tab.setAttribute("aria-selected", false);
     });
+
     // Mark the clicked tab as selected
+    event.currentTarget.setAttribute("aria-selected", true);
+
     // Find associated tab panel and show it
+    const id = event.currentTarget.id;
+    const tabPanel = tabs.querySelector(`[aria-labelledby=${id}]`);
+    tabPanel.hidden = false;
 }
 
 tabButtons.forEach(button => button.addEventListener("click", handleTabClick))
