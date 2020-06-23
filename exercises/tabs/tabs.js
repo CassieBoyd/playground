@@ -7,8 +7,18 @@ const tabPanels = tabs.querySelectorAll("[role='tabpanel']");
 console.log(tabButtons);
 
 function handleTabClick(e) {
-    console.log(e);
-    console.log("Tab clicked");
+    // Hide all tab panels
+    tabPanels.forEach(panel => {
+        panel.hidden = true;
+    });
+
+    // Dashed html elements can usually be accessed by using the camel case version but not custom or aria properties. For aria use .setAttribute instead.
+    // Mark all tabs as unselected
+    tabButtons.forEach(tab => {
+        tab.setAttribute("aria-selected", false);
+    });
+    // Mark the clicked tab as selected
+    // Find associated tab panel and show it
 }
 
 tabButtons.forEach(button => button.addEventListener("click", handleTabClick))
