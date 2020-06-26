@@ -18,6 +18,19 @@
         console.log("Yes");
     } else if (age > 50) {
         console.log("In your fifties");
+    } else {
+        console.log("Nothing was true");
+    }
+
+    // /\s/g is a RegEx (regular expression). They start and end with forward slashes. They are used to match characters in a given text. \s is targeting the space character and the g means global, which finds all the spaces. The - is what the spaces will be replaced with.
+
+    // slugify takes two arguments, the first is a sentence and the second is a boolean. If the second argument is true, the sentence will be converted to lower case in addition to the spaces being replaced. If the second argument is false or simply not provided, the else portion will run. 
+    function slugify(sentence, lowercase) {
+        if(lowercase) {
+            return sentence.replace(/\s/g, "-").toLowerCase();
+        } else {
+            return sentence.replace(/\s/g, "-");
+        }
     }
   </script>
 </body>
