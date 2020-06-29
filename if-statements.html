@@ -9,6 +9,21 @@
 </head>
 
 <body>
+    
+    <h2>Truthy Values</h2>
+    * 1
+    * -10
+    * Full string
+    * A string of "0"
+    * Empty array
+    * Empty object
+
+    <h2>Falsy Values</h2>
+    * 0
+    * Undefined variable
+    * Variable set to null
+    * A variable set to `"hello" - 10` NaN
+    * Empty string
   <script>
     const age = 50;
 
@@ -42,11 +57,50 @@
         console.log("Cool name!");
     }
 
-    if("awesome".includes(name)) {
+    const isAwesomeName = "awesome".includes(name)
+
+    if(isAwesomeName) {
         console.log("Super cool awesome name!");
     } else {
-        console.log("Bummer");
+        console.log("Bummer!");
     }
+
+    function nameIsAwesome(name) {
+        return "awesome".includes(name);
+    }
+
+    if(nameIsAwesome("wes")) {
+        console.log("Cool name, Wes!");
+    }
+
+    const dog = "ginger";
+
+    if(dog) {
+        console.log("You have a dog");
+    } else {
+        console.log("You don't have a dog");
+    }
+// Only a let can be undefined
+    // let score;
+    const score = {};
+    // 0 will be falsy but all other numbers will be truthy
+    if(score) {
+        console.log("There is a score already");
+    } else {
+        console.log("There is no score");
+    }
+
+    const values = [[], {}, -10, 1, 0, "", "Full string", " ", undefined, NaN, null];
+    console.group("Truthy or falsy values")
+    values.forEach(value => {
+        if(value) {
+            console.log(value, "is truthy");
+        } else {
+            console.log(value, "is falsy");
+        }
+    })
+    console.groupEnd()
+
   </script>
 </body>
 
