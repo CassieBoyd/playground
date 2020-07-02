@@ -137,7 +137,7 @@
         console.log("Showing admin bar");
     }
 
-    isAdmin ? showAdminBar() : null;
+    //isAdmin ? showAdminBar() : null;
 
     // And And trick
     function check1() {
@@ -158,6 +158,10 @@
     } else {
         console.log("Some checks failed");
     }
+
+    //isAdmin ? showAdminBar() : null;
+    // And And does the same thing as the ternary above
+    isAdmin && showAdminBar();
 
   </script>
 </body>
