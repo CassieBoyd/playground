@@ -101,6 +101,71 @@
     })
     console.groupEnd()
 
+    // Clears the console logs. Use this instead of commenting out previous code examples
+    console.clear()
+
+// Coercion- using ! to force something that is a different type (string, number, etc.) to be a real boolean.
+
+    const isCool = true;
+
+    if (!isCool) {
+        console.log("You are not cool");
+    }
+
+    // Ternaries- shorthand if statements
+
+    const count = 2;
+    //let word;
+    //if(count === 1) {
+    //    word = "item";
+    //} else {
+    //    word = "items";
+    //}
+
+    // 1. Condition
+    // 2. What to do if true
+    // 3. What to do if false
+
+    const word = count === 1 ? "item" : "items";
+
+    const sentence = `You have ${count} ${word} in your cart`;
+    console.log(sentence);
+
+    const isAdmin = true;
+
+    function showAdminBar() {
+        console.log("Showing admin bar");
+    }
+
+    //isAdmin ? showAdminBar() : null;
+
+    // And And trick
+    function check1() {
+        console.log("Running check 1");
+        return true;
+    }
+    function check2() {
+        console.log("Running check 2");
+        return false;
+    }
+    function check3() {
+        console.log("Running check 3");
+        return true;
+    }
+
+    if(check1() && check2() && check3()) {
+        console.log("All checks passed");
+    } else {
+        console.log("Some checks failed");
+    }
+
+    //isAdmin ? showAdminBar() : null;
+    // And And does the same thing as the ternary above
+    isAdmin && showAdminBar();
+
+    // If statements can leave out the {} if it's all on one line, otherwise the curly brackets are needed. The curly brackets can also be included in the one-line version.
+    if(isAdmin) showAdminBar();
+
   </script>
 </body>
 
