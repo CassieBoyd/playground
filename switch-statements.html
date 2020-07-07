@@ -20,7 +20,7 @@
   </style>
   <img src="./turtle.png" width ="200" alt="Turt" class="turtle">
   <script>
-      const turtle = document.querySelector(".turt");
+      const turtle = document.querySelector(".turtle");
       let x = 0;
       let y = 0;
       function handleKeyDown(event) {
@@ -44,7 +44,8 @@
           default:
             console.log("Not a valid move")
         }
-        console.log(x,y)
+        
+        turtle.setAttribute("style", `--x: ${x}px`);
       }
       window.addEventListener("keydown", handleKeyDown);
       console.log(turtle);
