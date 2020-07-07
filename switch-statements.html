@@ -7,38 +7,48 @@
   <title></title>
   <link rel="stylesheet" href="../base.css">
 </head>
-<img src="./turtle.png" width ="200" alt="Turt" class="turt">
+
 
 <body>
-<script>
-    const turtle = document.querySelector(".turt");
-    let x = 0;
-    let y = 0;
-    function handleKeyDown(event) {
-      // If it's not an arrow key, honey badger doesn't care
-      if(!event.key.includes("Arrow")) {
-        return;
-      }
-      switch(event.key) {
-        case "ArrowUp":
-          y = y + 1; 
-          break;
-        case "ArrowDown":
-          y = y - 1;
-          break;
-        case "ArrowLeft":
-          x = x - 1;
-          break;
-        case "ArrowRight":
-          x = x + 1;
-          break;
-        default:
-          console.log("Not a valid move")
-      }
+  <style>
+    .turtle {
+      position: relative;
+      --x: 10px;
+      --y: 10px;
+      transform: translateX(var(--x)) translateY(var(--y));
     }
-    window.addEventListener("keydown", handleKeyDown);
-    console.log(turtle);
-</script>
+  </style>
+  <img src="./turtle.png" width ="200" alt="Turt" class="turtle">
+  <script>
+      const turtle = document.querySelector(".turt");
+      let x = 0;
+      let y = 0;
+      function handleKeyDown(event) {
+        // If it's not an arrow key, honey badger doesn't care
+        if(!event.key.includes("Arrow")) {
+          return;
+        }
+        switch(event.key) {
+          case "ArrowUp":
+            y = y + 1; 
+            break;
+          case "ArrowDown":
+            y = y - 1;
+            break;
+          case "ArrowLeft":
+            x = x - 1;
+            break;
+          case "ArrowRight":
+            x = x + 1;
+            break;
+          default:
+            console.log("Not a valid move")
+        }
+        console.log(x,y)
+      }
+      window.addEventListener("keydown", handleKeyDown);
+      console.log(turtle);
+  </script>
 </body>
 
 </html>
