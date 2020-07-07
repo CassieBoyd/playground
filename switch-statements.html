@@ -12,7 +12,10 @@
 <body>
 <script>
     const turtle = document.querySelector(".turt");
-
+    function handleKeyDown(event) {
+      console.log(event.key);
+    }
+    window.addEventListener("keydown", handleKeyDown);
     console.log(turtle);
 </script>
 </body>
