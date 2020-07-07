@@ -12,12 +12,23 @@
 <body>
 <script>
     const turtle = document.querySelector(".turt");
+    let x = 0;
+    let y = 0;
     function handleKeyDown(event) {
       // If it's not an arrow key, honey badger doesn't care
       if(!event.key.includes("Arrow")) {
         return;
       }
-      console.log(event.key)
+      switch(event.key) {
+        case "ArrowUp":
+          y = y + 1; 
+        case "ArrowDown":
+          y = y - 1;
+        case "ArrowLeft":
+          x = x - 1;
+        case "ArrowRight":
+          x = x + 1;
+      }
     }
     window.addEventListener("keydown", handleKeyDown);
     console.log(turtle);
