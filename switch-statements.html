@@ -45,6 +45,7 @@
             console.log("Not a valid move")
         }
         
+        // Have to use setAttribute to update x and y coordinates
         turtle.setAttribute("style", `--x: ${x}px`);
       }
       window.addEventListener("keydown", handleKeyDown);
