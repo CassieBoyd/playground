@@ -22,12 +22,18 @@
       switch(event.key) {
         case "ArrowUp":
           y = y + 1; 
+          break;
         case "ArrowDown":
           y = y - 1;
+          break;
         case "ArrowLeft":
           x = x - 1;
+          break;
         case "ArrowRight":
           x = x + 1;
+          break;
+        default:
+          console.log("Not a valid move")
       }
     }
     window.addEventListener("keydown", handleKeyDown);
