@@ -10,13 +10,15 @@
 
 
 <body>
+  <!-- Order matters in transform: turtle needed to be translated on x and y axes before being rotated. I also learned that the plural of axis is spelled "axes". The more you know *==== -->
   <style>
     .turtle {
       position: relative;
       --x: 0;
       --y: 0;
+      --rotateX: 0;
       --rotate: 0;
-      transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotate));
+      transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotateX)) rotate(var(--rotate));
       transition: transform 0.2s;
     }
   </style>
@@ -27,6 +29,7 @@
       let y = 0;
       const speed = 50;
       let flipped = false;
+      let rotate = 0;
       function handleKeyDown(event) {
         // If it's not an arrow key, honey badger doesn't care
         if(!event.key.includes("Arrow")) {
@@ -35,17 +38,21 @@
         switch(event.key) {
           case "ArrowUp":
             y = y - 1; 
+            rotate = -90;
             break;
           case "ArrowDown":
             y = y + 1;
+            rotate = 90;
             break;
           case "ArrowLeft":
             x = x - 1;
             flipped = true;
+            rotate = 0;
             break;
           case "ArrowRight":
             x = x + 1;
             flipped = false;
+            rotate = 0;
             break;
           default:
             console.log("Not a valid move")
@@ -55,9 +62,10 @@
         // Element.setAttribute(name, value);
         // Sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value.
         turtle.setAttribute("style", `
-        --rotate: ${flipped ? "180" : "0"}deg;
+        --rotateX: ${flipped ? "180" : "0"}deg;
         --x: ${x * speed}px; 
         --y: ${y * speed}px;
+        --rotate: ${rotate}deg;
         `);
       }
       window.addEventListener("keydown", handleKeyDown);
