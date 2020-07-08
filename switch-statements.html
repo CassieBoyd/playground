@@ -13,9 +13,10 @@
   <style>
     .turtle {
       position: relative;
-      --x: 10px;
-      --y: 10px;
+      --x: 0;
+      --y: 0;
       transform: translateX(var(--x)) translateY(var(--y));
+      transition: transform 0.2s;
     }
   </style>
   <img src="./turtle.png" width ="200" alt="Turt" class="turtle">
@@ -23,6 +24,7 @@
       const turtle = document.querySelector(".turtle");
       let x = 0;
       let y = 0;
+      const speed = 50;
       function handleKeyDown(event) {
         // If it's not an arrow key, honey badger doesn't care
         if(!event.key.includes("Arrow")) {
@@ -48,7 +50,7 @@
         // Have to use setAttribute to update x and y coordinates
         // Element.setAttribute(name, value);
         // Sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value.
-        turtle.setAttribute("style", `--x: ${x}px; --y: ${y}px`);
+        turtle.setAttribute("style", `--x: ${x * speed}px; --y: ${y * speed}px`);
       }
       window.addEventListener("keydown", handleKeyDown);
       console.log(turtle);
