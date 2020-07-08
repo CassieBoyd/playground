@@ -15,7 +15,8 @@
       position: relative;
       --x: 0;
       --y: 0;
-      transform: translateX(var(--x)) translateY(var(--y));
+      --rotate: 0;
+      transform: translateX(var(--x)) translateY(var(--y)) rotateY(var(--rotate));
       transition: transform 0.2s;
     }
   </style>
@@ -25,6 +26,7 @@
       let x = 0;
       let y = 0;
       const speed = 50;
+      let flipped = false;
       function handleKeyDown(event) {
         // If it's not an arrow key, honey badger doesn't care
         if(!event.key.includes("Arrow")) {
@@ -39,9 +41,11 @@
             break;
           case "ArrowLeft":
             x = x - 1;
+            flipped = true;
             break;
           case "ArrowRight":
             x = x + 1;
+            flipped = false;
             break;
           default:
             console.log("Not a valid move")
@@ -50,7 +54,11 @@
         // Have to use setAttribute to update x and y coordinates
         // Element.setAttribute(name, value);
         // Sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value.
-        turtle.setAttribute("style", `--x: ${x * speed}px; --y: ${y * speed}px`);
+        turtle.setAttribute("style", `
+        --rotate: ${flipped ? "180" : "0"}deg;
+        --x: ${x * speed}px; 
+        --y: ${y * speed}px;
+        `);
       }
       window.addEventListener("keydown", handleKeyDown);
       console.log(turtle);
