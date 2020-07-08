@@ -30,10 +30,10 @@
         }
         switch(event.key) {
           case "ArrowUp":
-            y = y + 1; 
+            y = y - 1; 
             break;
           case "ArrowDown":
-            y = y - 1;
+            y = y + 1;
             break;
           case "ArrowLeft":
             x = x - 1;
@@ -46,7 +46,9 @@
         }
         
         // Have to use setAttribute to update x and y coordinates
-        turtle.setAttribute("style", `--x: ${x}px`);
+        // Element.setAttribute(name, value);
+        // Sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value.
+        turtle.setAttribute("style", `--x: ${x}px; --y: ${y}px`);
       }
       window.addEventListener("keydown", handleKeyDown);
       console.log(turtle);
