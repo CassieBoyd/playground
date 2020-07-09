@@ -24,18 +24,38 @@ Interval- run something every time a set amount of time has lapsed
         console.log("Brrrrrring")
     }
 
-    console.log("Starting");
-    setTimeout(bell, 500);
-    console.log("Finishing");
+    //console.log("Starting");
+    //setTimeout(bell, 500);
+    //console.log("Finishing");
 
-    
+    // Takes two parameters: a function to run and milliseconds
     function setImmediateInterval(funcToRun, ms) {
         // Call function right away
         funcToRun();
         // Run a regular interval
         return setInterval(funcToRun, ms);
     }
-    setImmediateInterval(buzzer, 2000);
+    //setImmediateInterval(buzzer, 2000);
+
+    function sayHi() {
+        console.log("Hi");
+    };
+    // Reusing setImmediateInterval function with a new function and interval
+    //setImmediateInterval(sayHi, 200);
+    function destroy() {
+        document.body.innerHTML = `<p>DESTROYED</p>`;
+    }
+
+    //Put setTimeout in a variable so we can pass a reference to it in clearTimeout
+    const missile = setTimeout(destroy, 5000);
+    console.log(missile);
+
+    window.addEventListener("click", function() {
+        console.log("Missile launch cancelled");
+        // Stop timer from running
+        clearTimeout(missile);
+    })
+
  </script>
 </body>
 
