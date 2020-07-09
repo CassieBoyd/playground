@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Intervals and Timers</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+<!-- {% comment %} 
+Timer- run something once after specified amount of time
+Interval- run something every time a set amount of time has lapsed
+ {% endcomment %} -->
+ <script>
+     // setTimeout is a method on window, takes two arguments: callback function and amount of milliseconds to run function after.
+
+    function buzzer() {
+        console.log("Bzzzzzzzzz");
+    }
+
+    function bell() {
+        console.log("Brrrrrring")
+    }
+
+    //console.log("Starting");
+    //setTimeout(bell, 500);
+    //console.log("Finishing");
+
+    // Takes two parameters: a function to run and milliseconds
+    function setImmediateInterval(funcToRun, ms) {
+        // Call function right away
+        funcToRun();
+        // Run a regular interval
+        return setInterval(funcToRun, ms);
+    }
+    //setImmediateInterval(buzzer, 2000);
+
+    function sayHi() {
+        console.log("Hi");
+    };
+    // Reusing setImmediateInterval function with a new function and interval
+    //setImmediateInterval(sayHi, 200);
+    function destroy() {
+        document.body.innerHTML = `<p>DESTROYED</p>`;
+    }
+
+    //Put setTimeout in a variable so we can pass a reference to it in clearTimeout
+    const missile = setTimeout(destroy, 5000);
+    console.log(missile);
+
+    window.addEventListener("click", function() {
+        console.log("Missile launch cancelled");
+        // Stop timer from running
+        clearTimeout(missile);
+    })
+
+    const duck = setInterval(function() {
+        console.log("🦆")
+        console.log("Duck");
+    }, 1000);
+
+    const goose = setInterval(function() {
+        console.log("🦢")
+        console.log("Goose.....yes, I know it's a swan. Just go with it.");
+    }, 2500);
+
+    setTimeout(function () {
+        clearInterval(duck);
+    }, 5000);
+
+    setTimeout(function () {
+        clearInterval(goose);
+    }, 5500);
+
+ </script>
+</body>
+
+</html>
