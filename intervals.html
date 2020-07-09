@@ -14,10 +14,24 @@ Timer- run something once after specified amount of time
 Interval- run something every time a set amount of time has lapsed
  {% endcomment %} -->
  <script>
-     // setTimeout is a method on window, takes two arguments: function and amount of milliseconds to run function after.
-    setTimeout(function() {
-        console.log("Done");
-    }, 500);
+     // setTimeout is a method on window, takes two arguments: callback function and amount of milliseconds to run function after.
+
+    function buzzer() {
+        console.log("Bzzzzzzzzz");
+    }
+
+    console.log("Starting");
+    setTimeout(buzzer, 500);
+    console.log("Finishing");
+
+    
+    function setImmediateInterval(funcToRun, ms) {
+        // Call function right away
+        funcToRun();
+        // Run a regular interval
+        return setInterval(funcToRun, ms);
+    }
+    setImmediateInterval(buzzer, 2000);
  </script>
 </body>
 
