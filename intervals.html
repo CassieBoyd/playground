@@ -56,15 +56,23 @@ Interval- run something every time a set amount of time has lapsed
         clearTimeout(missile);
     })
 
-    setInterval(function() {
+    const duck = setInterval(function() {
         console.log("🦆")
         console.log("Duck");
     }, 1000);
 
-    setInterval(function() {
+    const goose = setInterval(function() {
         console.log("🦢")
         console.log("Goose.....yes, I know it's a swan. Just go with it.");
-    }, 2500)
+    }, 2500);
+
+    setTimeout(function () {
+        clearInterval(duck);
+    }, 5000);
+
+    setTimeout(function () {
+        clearInterval(goose);
+    }, 5500);
 
  </script>
 </body>
