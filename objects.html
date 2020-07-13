@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <input type="text" name="first">
   <script>
       const age = 90;
       // Objects have property/value pairs aka key/value pairs
@@ -29,6 +30,12 @@
     // Pass object to Object.freeze if you want to prevent it from being updated.
     const cassieFrozen = Object.freeze(person);
     console.log(person)
+
+    console.log("Dot:",person.age);
+    
+    const propertyToCheck = prompt("What do you want to check?");
+    console.log("Bracket:",person[propertyToCheck]);
+    console.log(propertyToCheck);
   </script>
 </body>
 
