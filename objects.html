@@ -75,6 +75,24 @@
     name2 = "Cassandra";
     console.log(name2);
 
+    const person1 = {
+        first: "Cassie",
+        last: "Boyd",
+    };
+
+    const person2 = {
+        first: "Cassie",
+        last: "Boyd",
+    };
+
+    console.log("Persons 1 & 2 equal?",person1 === person2);
+
+    const person3 = person1;
+    console.log(person3.first);
+    person3.first = "Peach";
+    console.log("person3", person3.first);
+    console.log("person1",person1.first); // Will be Peach instead of Cassie because when objects or arrays are pointed to (put in a variable) by reference (line 90) it doesn't actually create a new object. So, when I updated person3 to be named Peach, I was actually updating person1 because person3 never existed as an object. Same principals apply for arrays, maps and sets. 
+
 
   </script>
 </body>
