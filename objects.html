@@ -130,12 +130,30 @@
         bread: 2, 
     };
 
+    // Outside booleans, numbers and strings will not be modified when passed into a function
     function doStuff(data) {
         data = "Something else";
         console.log(data);
     }
 
+    // Outside objects (and arrays) that are passed into a function and updated will be modified outside of the function as well. 
+    function doStuff2(data) {
+        data.tomatoes = 84;
+        console.log("Tomatoes:", data);
+    }
+
+    // To avoid this, make sure to pass the data in as a copy rather than a reference.
+    function doStuff3(...data) {
+        data.tofu = 12;
+        console.log("Tofu:", data);
+    }
+
+
     doStuff(name1);
+    doStuff2(inventory);
+    console.log("Tomatoes:", inventory.tomatoes);
+    doStuff3(inventory);
+    console.log("Tofu:", inventory.tofu);
   </script>
 </body>
 
