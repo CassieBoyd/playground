@@ -103,7 +103,39 @@
     console.log(person4.first);
     console.log(person1.first);
 
-    person4.clothing.shirt = "blue"; // This causes person1 to also have a blue shirt because the spread operator does a shallow copy meaning it only copies one level deep. To do a deep copy we can use a utility library called Lodash. It has to be added before the script tag that utilizes it.
+    //person4.clothing.shirt = "blue"; // This causes person1 to also have a blue shirt because the spread operator does a shallow copy meaning it only copies one level deep. To do a deep copy we can use a utility library called Lodash. It has to be added before the script tag that utilizes it.
+
+    const person5 = _.cloneDeep(person1);
+    person5.clothing.shirt = "purple";
+
+    const meatInventory = {
+        tofu: 2,
+        veggieBacon: 3,
+    };
+
+    const veggieInventory = {
+        lettuce: 7,
+        tomatoes: 4,
+    };
+
+    // Spread operator used to combine two objects into a single object
+    const inventory = { ...meatInventory, ...veggieInventory };
+    // In the event that two objects have the same key (property) name, the last object that was passed will overwrite any that came before it.
+
+
+    // Can also add key/value pairs along with the spread operators
+    const inventory2 = { 
+        ...meatInventory, 
+        ...veggieInventory,
+        bread: 2, 
+    };
+
+    function doStuff(data) {
+        data = "Something else";
+        console.log(data);
+    }
+
+    doStuff(name1);
   </script>
 </body>
 
