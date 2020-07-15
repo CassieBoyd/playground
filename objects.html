@@ -10,6 +10,7 @@
 
 <body>
     <input type="text" name="first" value="Cassie">
+  <script src="https://unpkg.com/lodash@4.17.19/lodash.js"></script>
   <script>
       const age = 90;
       // Objects have property/value pairs aka key/value pairs
@@ -78,6 +79,10 @@
     const person1 = {
         first: "Cassie",
         last: "Boyd",
+        clothing: {
+            shirt: "black",
+            pants: "grey",
+        },
     };
 
     const person2 = {
@@ -93,12 +98,12 @@
     //console.log("person3", person3.first);
     console.log("person1",person1.first); // Will be Peach instead of Cassie because when objects or arrays are pointed to (put in a variable) by reference (line 90) it doesn't actually create a new object. So, when I updated person3 to be named Peach, I was actually updating person1 because person3 never existed as an object. Same principals apply for arrays, maps and sets. 
 
-    const person4 = { ...person1 }; // Spread operator used to copy objects
+    const person4 = { ...person1 }; // Spread operator used to copy objects instead of just a reference.
     person4.first = "Ruth";
     console.log(person4.first);
     console.log(person1.first);
 
-
+    person4.clothing.shirt = "blue"; // This causes person1 to also have a blue shirt because the spread operator does a shallow copy meaning it only copies one level deep. To do a deep copy we can use a utility library called Lodash. It has to be added before the script tag that utilizes it.
   </script>
 </body>
 
