@@ -10,6 +10,7 @@
 
 <body>
     <input type="text" name="first" value="Cassie">
+  <script src="https://unpkg.com/lodash@4.17.19/lodash.js"></script>
   <script>
       const age = 90;
       // Objects have property/value pairs aka key/value pairs
@@ -43,9 +44,9 @@
 
     console.log("Dot:",person.age);
     
-    const propertyToCheck = prompt("What do you want to check?");
-    console.log("Bracket:",person[propertyToCheck]);
-    console.log("PropToCheck: ",propertyToCheck);
+    //const propertyToCheck = prompt("What do you want to check?");
+    //console.log("Bracket:",person[propertyToCheck]);
+    //console.log("PropToCheck: ",propertyToCheck);
 
     const nameInput = document.querySelector('[name="first"]');
     // Check whether nameInput exists, if so assign it to .value, if not log an empty string
@@ -56,9 +57,103 @@
     console.log(delete person.name);  
     console.log(person);
 
-    // Methods
+    console.clear();
+
+    //------------------Lesson 41- Object Reference vs Values--------------------
+    let name1 = "Cassie";
+    let name2 = "Cassie";
+    console.log(name1 === name2);
+
+    name1 = "Ken";
+    console.log(name1 === name2);
+
+    // Update name1 to equal the value of name2
+    name1 = name2;
+    console.log(name1 === name2);
+    name2 = name1;
+
+    console.log(name2);
+    name2 = "Cassandra";
+    console.log(name2);
+
+    const person1 = {
+        first: "Cassie",
+        last: "Boyd",
+        clothing: {
+            shirt: "black",
+            pants: "grey",
+        },
+    };
+
+    const person2 = {
+        first: "Cassie",
+        last: "Boyd",
+    };
+
+    console.log("Persons 1 & 2 equal?",person1 === person2);
+
+    //const person3 = person1;
+    //console.log(person3.first);
+    //person3.first = "Peach";
+    //console.log("person3", person3.first);
+    console.log("person1",person1.first); // Will be Peach instead of Cassie because when objects or arrays are pointed to (put in a variable) by reference (line 90) it doesn't actually create a new object. So, when I updated person3 to be named Peach, I was actually updating person1 because person3 never existed as an object. Same principals apply for arrays, maps and sets. 
+
+    const person4 = { ...person1 }; // Spread operator used to copy objects instead of just a reference.
+    person4.first = "Ruth";
+    console.log(person4.first);
+    console.log(person1.first);
+
+    //person4.clothing.shirt = "blue"; // This causes person1 to also have a blue shirt because the spread operator does a shallow copy meaning it only copies one level deep. To do a deep copy we can use a utility library called Lodash. It has to be added before the script tag that utilizes it.
+
+    const person5 = _.cloneDeep(person1);
+    person5.clothing.shirt = "purple";
+
+    const meatInventory = {
+        tofu: 2,
+        veggieBacon: 3,
+    };
+
+    const veggieInventory = {
+        lettuce: 7,
+        tomatoes: 4,
+    };
+
+    // Spread operator used to combine two objects into a single object
+    const inventory = { ...meatInventory, ...veggieInventory };
+    // In the event that two objects have the same key (property) name, the last object that was passed will overwrite any that came before it.
 
 
+    // Can also add key/value pairs along with the spread operators
+    const inventory2 = { 
+        ...meatInventory, 
+        ...veggieInventory,
+        bread: 2, 
+    };
+
+    // Outside booleans, numbers and strings will not be modified when passed into a function
+    function doStuff(data) {
+        data = "Something else";
+        console.log(data);
+    }
+
+    // Outside objects (and arrays) that are passed into a function and updated will be modified outside of the function as well. 
+    function doStuff2(data) {
+        data.tomatoes = 84;
+        console.log("Tomatoes:", data);
+    }
+
+    // To avoid this, make sure to pass the data in as a copy rather than a reference.
+    function doStuff3(...data) {
+        data.tofu = 12;
+        console.log("Tofu:", data);
+    }
+
+
+    doStuff(name1);
+    doStuff2(inventory);
+    console.log("Tomatoes:", inventory.tomatoes);
+    doStuff3(inventory);
+    console.log("Tofu:", inventory.tofu);
   </script>
 </body>
 
