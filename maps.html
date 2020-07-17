@@ -20,6 +20,8 @@
     myMap.set("name", "Cassie");
 
     // Maps can have any data type as the key unlike objects
+    // Maps will maintain the order of their properties unlike objects
+    // Maps are only for holding data so they can't house functions
     myMap.set(100, "This is a number");
     myMap.set(true, "This is a boolean");
     myMap.set(person1, "Fresh");
@@ -44,6 +46,11 @@
     // .has()
 
     console.log(myMap.get(person1));
+
+    // JSON - JavaScript Object Notation
+    // JSON.stringify(objectName) to convert object to text
+    // JSON.parse("string to convert") to convert text to object
+    // JSON doesn't currently work on maps. They must first be converted to an object using Object.fromEntries(mapName). However, if properties have been added to the object they may not convert properly. 
   </script>
 </body>
 
