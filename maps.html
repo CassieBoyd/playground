@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Maps</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+    <ul class="prizes"></ul>
+  <script>
+      const person1 = {
+          name: "Cassie",
+          age: 70,
+      };
+    const myMap = new Map();
+    // .set() takes two arguments, a key and a value
+    myMap.set("name", "Cassie");
+
+    // Maps can have any data type as the key unlike objects
+    // Maps will maintain the order of their properties unlike objects
+    // Maps are only for holding data so they can't house functions
+    myMap.set(100, "This is a number");
+    myMap.set(true, "This is a boolean");
+    myMap.set(person1, "Fresh");
+    console.log(myMap);
+
+    const score = 300;
+
+    const prizes = new Map();
+    prizes.set(100, "Bear");
+    prizes.set(200, "Otter");
+    prizes.set(300, "Cat");
+    console.log(`You win a ${prizes.get(score)}!`);
+
+    // Select the ul
+    const ul = document.querySelector(".prizes");
+
+    for(const [points, prize] of prizes) {
+        const li = `<li>${points}: ${prize}</li>`;
+        ul.insertAdjacentHTML("beforeend", li);
+    }
+
+    // .has()
+
+    console.log(myMap.get(person1));
+
+    // JSON - JavaScript Object Notation
+    // JSON.stringify(objectName) to convert object to text
+    // JSON.parse("string to convert") to convert text to object
+    // JSON doesn't currently work on maps. They must first be converted to an object using Object.fromEntries(mapName). However, if properties have been added to the object they may not convert properly. 
+  </script>
+</body>
+
+</html>
