@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <ul class="prizes"></ul>
   <script>
       const person1 = {
           name: "Cassie",
@@ -24,13 +25,23 @@
     myMap.set(person1, "Fresh");
     console.log(myMap);
 
-const score = 300;
+    const score = 300;
 
-const prizes = new Map();
-prizes.set(100, "Bear");
-prizes.set(200, "Otter");
-prizes.set(300, "Cat");
-console.log(`You win a ${prizes.get(score)}!`);
+    const prizes = new Map();
+    prizes.set(100, "Bear");
+    prizes.set(200, "Otter");
+    prizes.set(300, "Cat");
+    console.log(`You win a ${prizes.get(score)}!`);
+
+    // Select the ul
+    const ul = document.querySelector(".prizes");
+
+    for(const [points, prize] of prizes) {
+        const li = `<li>${points}: ${prize}</li>`;
+        ul.insertAdjacentHTML("beforeend", li);
+    }
+
+    // .has()
 
     console.log(myMap.get(person1));
   </script>
