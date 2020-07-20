@@ -14,11 +14,21 @@
     <script>
         // To check if something is an array: Array.isArray(nameOfTheArray)
         // Returns true or false
-        const names = ["Cassie", "Ken", "Peach","Cassie", "Ken", "Peach","Cassie", "Ken", "Peach","Cassie", "Ken", "Peach","Cassie", "Ken", "Peach","Cassie", "Ken", "Peach","Cassie", "Ken", "Peach","Cassie", "Ken", "Peach","Cassie", "Ken", "Peach","Cassie", "Ken", "Peach",];
+        const names = ["Cassie", "Ken", "Peach"];
 
         console.log(names[0]);
         console.log(names.length);
         console.log(names[names.length - 1])
+
+        // Mutable methods perform mutations
+        const numbers = [1,2,3,4,5,6,7,8,9];
+
+        // Since .reverse() changes the original array we could just run it on numbers without putting it into a new variable.
+        const numbersBackwards = numbers.reverse();
+        console.log(numbersBackwards);
+        console.log(numbers)
+        
+        // Immutable methods don't change the original code
     </script>
 </body>
 
