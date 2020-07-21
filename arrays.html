@@ -33,6 +33,23 @@
         const names3 = ["Bowie", ...names];
         console.log(names3);
 
+        const cars = ["Batmobile", "Ecto 1", "Baby", "Mystery Machine"];
+        
+        // Using .slice() to add an item to the middle of an array
+        const newCars = [
+        ...cars.slice(0,2),
+        "Tardis",
+        ...cars.slice(2)
+        ];
+        console.log(newCars);
+
+        // Using .slice() to remove an item from the middle of an array
+        const removeCar = [
+        ...newCars.slice(0, 3),
+        ...newCars.slice(4)
+        ]
+        console.log("Bye, Baby", removeCar);
+
         // Mutable methods perform mutations
         const numbers = [1,2,3,4,5,6,7,8,9];
         // If you want to use a mutation method but NOT mutate the original array, take a copy of the array
@@ -46,12 +63,18 @@
         console.log("Numbers:", numbers)
 
         // Immutable methods don't change the original code
-        // .slice uses the array's index to create a new array taking two arguments, the start and stop points
+        // .slice uses the array's index to create a new array taking two arguments, the start and stop points. The stop point is not included in the array.
+        // If you don't provide a second argument, it'll automatically go to the end of the array.
         const pizzaSlice = numbers.slice(2,4);
         console.log(pizzaSlice);
 
         // .slice did not change the original array
         console.log(numbers);
+
+        const splicedNumbers = [1,2,3,4,5,6,7,8,9];
+        // .splice takes two arguments, the index number to start at and how many index positions to remove. In this case, 4 and 5 will be removed from the original array.
+        splicedNumbers.splice(3,2);
+        console.log(splicedNumbers);
     </script>
 </body>
 
