@@ -50,6 +50,33 @@
         ]
         console.log("Bye, Baby", removeCar);
 
+        const comments = [
+            { text : "Nice job!", id: 123},
+            { text : "Neat!", id: 124},
+            { text : "Zoinks!", id: 125},
+            { text : "Jinkies!", id: 126},
+            { text : "Is it time to eat yet?!", id: 127},
+        ];
+
+        function deleteComment(id, comments) {
+            // Find index of item in array
+            // Make new array without that item in it
+            // Return new array
+        }
+
+        // Use .findIndex to find the index number of an item in an array.
+        const cassieIndex = names.findIndex(name => {
+            if (name === "Cassie") {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        // Could also be written:
+        // const cassieIndex = names.findIndex(name => name === "Cassie");
+
+        console.log("Cassie Index", cassieIndex);
+
         // Mutable methods perform mutations
         const numbers = [1,2,3,4,5,6,7,8,9];
         // If you want to use a mutation method but NOT mutate the original array, take a copy of the array
