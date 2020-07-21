@@ -22,13 +22,23 @@
 
         // Mutable methods perform mutations
         const numbers = [1,2,3,4,5,6,7,8,9];
+        // If you want to use a mutation method but NOT mutate the original array, take a copy of the array
+        const numbersReversed = [...numbers];
+        numbersReversed.reverse(numbers);
+        console.log("Numbers Reversed:", numbersReversed);
 
         // Since .reverse() changes the original array we could just run it on numbers without putting it into a new variable.
-        const numbersBackwards = numbers.reverse();
-        console.log(numbersBackwards);
-        console.log(numbers)
-        
+        //const numbersBackwards = numbers.reverse();
+        //console.log(numbersBackwards);
+        console.log("Numbers:", numbers)
+
         // Immutable methods don't change the original code
+        // .slice uses the array's index to create a new array taking two arguments, the start and stop points
+        const pizzaSlice = numbers.slice(2,4);
+        console.log(pizzaSlice);
+
+        // .slice did not change the original array
+        console.log(numbers);
     </script>
 </body>
 
