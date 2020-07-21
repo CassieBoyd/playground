@@ -18,13 +18,26 @@
 
         console.log(names[0]);
         console.log(names.length);
-        console.log(names[names.length - 1])
+        console.log(names[names.length - 1]);
+
+        // .push mutates original array
+        names.push("Autumn")
+        console.log(names);
+        // Can take a copy and update the copy instead of the original
+        const names2 = [...names, "Rogue"];
+
+        // While .push adds items to the end of an array, .unshift adds them to the beginning.
+        names.unshift("Ginger");
+        console.log(names);
+
+        const names3 = ["Bowie", ...names];
+        console.log(names3);
 
         // Mutable methods perform mutations
         const numbers = [1,2,3,4,5,6,7,8,9];
         // If you want to use a mutation method but NOT mutate the original array, take a copy of the array
-        const numbersReversed = [...numbers];
-        numbersReversed.reverse(numbers);
+        const numbersReversed = [...numbers];//Can also call .reverse after the spread operator
+        numbersReversed.reverse();
         console.log("Numbers Reversed:", numbersReversed);
 
         // Since .reverse() changes the original array we could just run it on numbers without putting it into a new variable.
