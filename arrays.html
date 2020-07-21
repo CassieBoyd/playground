@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>
+
+  </title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+    <script>
+        // To check if something is an array: Array.isArray(nameOfTheArray)
+        // Returns true or false
+        const names = ["Cassie", "Ken", "Peach"];
+
+        console.log(names[0]);
+        console.log(names.length);
+        console.log(names[names.length - 1]);
+
+        // .push mutates original array
+        names.push("Autumn")
+        console.log(names);
+        // Can take a copy and update the copy instead of the original
+        const names2 = [...names, "Rogue"];
+
+        // While .push adds items to the end of an array, .unshift adds them to the beginning.
+        names.unshift("Ginger");
+        console.log(names);
+
+        const names3 = ["Bowie", ...names];
+        console.log(names3);
+
+        const cars = ["Batmobile", "Ecto 1", "Baby", "Mystery Machine"];
+        
+        // Using .slice() to add an item to the middle of an array
+        const newCars = [
+        ...cars.slice(0,2),
+        "Tardis",
+        ...cars.slice(2)
+        ];
+        console.log(newCars);
+
+        // Using .slice() to remove an item from the middle of an array
+        const removeCar = [
+        ...newCars.slice(0, 3),
+        ...newCars.slice(4)
+        ]
+        console.log("Bye, Baby", removeCar);
+
+        const comments = [
+            { text : "Nice job!", id: 123},
+            { text : "Neat!", id: 124},
+            { text : "Zoinks!", id: 125},
+            { text : "Jinkies!", id: 126},
+            { text : "Is it time to eat yet?!", id: 127},
+        ];
+
+        // Takes the id as the first argument and the comments array as the second argument. The comments array is searched using .findIndex to find the comment with the id that matches the one provided in the argument. Then a new array is returned that doesn't contain that comment.
+        function deleteComment(id, comments) {
+            // Find index of item in array
+            const commentIndex = comments.findIndex(comment => comment.id === id);
+            // Make new array without that item in it
+            // Return new array
+            return [
+                ...comments.slice(0, commentIndex),
+                ...comments.slice(commentIndex + 1),
+            ];
+        }
+
+        // Use .findIndex to find the index number of an item in an array.
+        const cassieIndex = names.findIndex(name => {
+            if (name === "Cassie") {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        // Could also be written:
+        // const cassieIndex = names.findIndex(name => name === "Cassie");
+
+        const newNamesWithoutCassie = [
+            // Get everything up to Cassie index
+            // Use spread operator to spread the contents into the new array
+            ...names.slice(0, cassieIndex),
+            // Get everything after Cassie index
+            ...names.slice(cassieIndex + 1),
+        ]; // Could call .flat() at the end of the new array instead of using the spread operator. Both methods combine the two arrays into a single array.
+
+        // Could also put the array into a variable and call .flat on it.
+        // const usingFlat = newNamesWithoutCassie.flat();
+        // console.log("Flat", usingFlat);
+
+        console.log("Bye, Cassie", newNamesWithoutCassie)
+
+        console.log("Cassie Index", cassieIndex);
+        console.log(names[cassieIndex]);
+
+        // Mutable methods perform mutations
+        const numbers = [1,2,3,4,5,6,7,8,9];
+        // If you want to use a mutation method but NOT mutate the original array, take a copy of the array
+        const numbersReversed = [...numbers];//Can also call .reverse after the spread operator
+        numbersReversed.reverse();
+        console.log("Numbers Reversed:", numbersReversed);
+
+        // Since .reverse() changes the original array we could just run it on numbers without putting it into a new variable.
+        //const numbersBackwards = numbers.reverse();
+        //console.log(numbersBackwards);
+        console.log("Numbers:", numbers)
+
+        // Immutable methods don't change the original code
+        // .slice uses the array's index to create a new array taking two arguments, the start and stop points. The stop point is not included in the array.
+        // If you don't provide a second argument, it'll automatically go to the end of the array.
+        const pizzaSlice = numbers.slice(2,4);
+        console.log(pizzaSlice);
+
+        // .slice did not change the original array
+        console.log(numbers);
+
+        const splicedNumbers = [1,2,3,4,5,6,7,8,9];
+        // .splice takes two arguments, the index number to start at and how many index positions to remove. In this case, 4 and 5 will be removed from the original array.
+        splicedNumbers.splice(3,2);
+        console.log(splicedNumbers);
+    </script>
+</body>
+
+</html>
