@@ -58,10 +58,16 @@
             { text : "Is it time to eat yet?!", id: 127},
         ];
 
+        // Takes the id as the first argument and the comments array as the second argument. The comments array is searched using .findIndex to find the comment with the id that matches the one provided in the argument. Then a new array is returned that doesn't contain that comment.
         function deleteComment(id, comments) {
             // Find index of item in array
+            const commentIndex = comments.findIndex(comment => comment.id === id);
             // Make new array without that item in it
             // Return new array
+            return [
+                ...comments.slice(0, commentIndex),
+                ...comments.slice(commentIndex + 1),
+            ];
         }
 
         // Use .findIndex to find the index number of an item in an array.
@@ -75,7 +81,22 @@
         // Could also be written:
         // const cassieIndex = names.findIndex(name => name === "Cassie");
 
+        const newNamesWithoutCassie = [
+            // Get everything up to Cassie index
+            // Use spread operator to spread the contents into the new array
+            ...names.slice(0, cassieIndex),
+            // Get everything after Cassie index
+            ...names.slice(cassieIndex + 1),
+        ]; // Could call .flat() at the end of the new array instead of using the spread operator. Both methods combine the two arrays into a single array.
+
+        // Could also put the array into a variable and call .flat on it.
+        // const usingFlat = newNamesWithoutCassie.flat();
+        // console.log("Flat", usingFlat);
+
+        console.log("Bye, Cassie", newNamesWithoutCassie)
+
         console.log("Cassie Index", cassieIndex);
+        console.log(names[cassieIndex]);
 
         // Mutable methods perform mutations
         const numbers = [1,2,3,4,5,6,7,8,9];
