@@ -51,7 +51,7 @@
 
     function createRange(start, end) {
         const range = Array.from({ length: end - start }, function (item, index) {
-            return index;
+            return index + start;
         })
         return range;
     }
