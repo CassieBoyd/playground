@@ -93,11 +93,22 @@
     console.log(foodString.split(","));
 
     // take the last item off toppings with pop()
-    
+    //console.log("Pre-Pop", toppings);
+    toppings.pop(); //Could put this in a const to use later with push
+    //console.log("Post-Pop", toppings);
 
     // add it back with push()
+    toppings.push("Cheese");
+    //console.log("Push", toppings);
+
     // take the first item off toppings with shift()
+    const firstItem = toppings.shift();
+    console.log(firstItem);
+
     // add it back in with unshift()
+    toppings.unshift(firstItem);
+    //console.log(toppings)
+    
     // Do the last four,but immutable (with spreads and new variables)
 
 
