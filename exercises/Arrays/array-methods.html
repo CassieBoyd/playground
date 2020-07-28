@@ -108,9 +108,30 @@
     // add it back in with unshift()
     toppings.unshift(firstItem);
     //console.log(toppings)
-    
-    // Do the last four,but immutable (with spreads and new variables)
 
+    // Do the last four instructions again, but with immutable methods (with spreads and new variables)
+
+    // take the last item off toppings
+    // .slice makes a new array using the original array starting at index 0 and stopping before the last item's index.
+    let newToppings = toppings.slice(0, toppings.length - 1);
+    console.log(newToppings);
+    console.log(toppings.length);
+    console.log(newToppings.length);
+
+
+    // add it back
+    // The spread operator spreads newToppings into a new array and adds in the last item of the toppings array by taking the length of the array minus 1 to grab the index of the last item.
+    newToppings = [...newToppings, toppings[toppings.length -1]];
+    console.log(newToppings);
+
+    // take the first item off toppings
+    // Use .slice to start at index 1 in order to eliminate the first item and stop at the last item.
+    newToppings = toppings.slice(1, toppings.length);
+    console.log(newToppings);
+
+    // add it back in
+    newToppings = [toppings[0], ...newToppings];
+    console.log(newToppings);
 
     // Make a copy of the toppings array with slice()
     // Make a copy of the toppings array with a spread
