@@ -150,9 +150,21 @@
     console.log(toppingCopy);
 
     // find the index of Avocado with indexOf() / lastIndexOf()
+    // indexOf() will find the first instance of the serach criteria and lastIndexOf() finds the last instance.
+    const AvocadoIndex = toppings.indexOf("Avocado");
+    console.log(AvocadoIndex);
+
     // Check if hot sauce is in the toppings with includes()
+    // includes() is NOT case-sensitive
+    console.log(toppings.includes("Hot Sauce"));
+
     // add it if it's not
+    toppings.push("Hot Sauce");
+    //console.log(toppings);
+
     // flip those toppings around with reverse()
+    toppings.reverse();
+    console.log(toppings);
 
     /*
       Callback Methods
