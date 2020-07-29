@@ -156,15 +156,23 @@
 
     // Check if hot sauce is in the toppings with includes()
     // includes() is NOT case-sensitive
-    console.log(toppings.includes("Hot Sauce"));
+    //console.log(toppings.includes("Hot Sauce"));
+    const isInToppings = toppings.includes("Hot Sauce");
+    console.log(isInToppings);
 
     // add it if it's not
-    toppings.push("Hot Sauce");
-    //console.log(toppings);
+    //toppings.push("Hot Sauce");
+    if(!isInToppings) {
+        toppings.push("Hot Sauce");
+    }
+    console.log(toppings);
 
     // flip those toppings around with reverse()
-    toppings.reverse();
-    console.log(toppings);
+    //toppings.reverse();
+    //console.log(toppings);
+
+    const toppingsReversed = [...toppings].reverse();
+    console.log(toppingsReversed);
 
     /*
       Callback Methods
