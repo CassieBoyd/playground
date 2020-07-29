@@ -85,22 +85,94 @@
 
     // Display all bun types with " or " - use join()
 
-    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into a string
+    console.log(buns.join(" or " ));
+
+    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into an array
+
+    const foodString = "hot dogs,hamburgers,sausages,corn";
+    console.log(foodString.split(","));
 
     // take the last item off toppings with pop()
-    // add it back with push()
-    // take the first item off toppings with shift()
-    // add it back in with unshift()
-    // Do the last four,but immutable (with spreads and new variables)
+    //console.log("Pre-Pop", toppings);
+    toppings.pop(); //Could put this in a const to use later with push
+    //console.log("Post-Pop", toppings);
 
+    // add it back with push()
+    toppings.push("Cheese");
+    //console.log("Push", toppings);
+
+    // take the first item off toppings with shift()
+    const firstItem = toppings.shift();
+    console.log(firstItem);
+
+    // add it back in with unshift()
+    toppings.unshift(firstItem);
+    //console.log(toppings)
+
+    // Do the last four instructions again, but with immutable methods (with spreads and new variables)
+
+    // take the last item off toppings
+    // .slice makes a new array using the original array starting at index 0 and stopping before the last item's index.
+    let newToppings = toppings.slice(0, toppings.length - 1);
+    //console.log(newToppings);
+    //console.log(toppings.length);
+    //console.log(newToppings.length);
+
+
+    // add it back
+    // The spread operator spreads newToppings into a new array and adds in the last item of the toppings array by taking the length of the array minus 1 to grab the index of the last item.
+    newToppings = [...newToppings, toppings[toppings.length -1]];
+    //console.log(newToppings);
+
+    // take the first item off toppings
+    // Use .slice to start at index 1 in order to eliminate the first item and stop at the last item.
+    newToppings = toppings.slice(1, toppings.length);
+    //console.log(newToppings);
+
+    // add it back in
+    newToppings = [toppings[0], ...newToppings];
+    //console.log(newToppings);
 
     // Make a copy of the toppings array with slice()
+    // When copying the entire array you don't need the second argument denoting the end, it'll just automatically go to the end of the array.
+    const toppingCopy = toppings.slice(0);
+    toppings[0] = "Pork Chops";
+    //console.log(toppings);
+    console.log(toppingCopy);
+
     // Make a copy of the toppings array with a spread
+    const spreadToppings = [...toppings];
+    //console.log(spreadToppings);
+
     // take out items 3 to 5 of your new toppings array with splice()
+    // .splice takes two arguments, the index number to start at and how many index positions to remove
+    toppingCopy.splice(3, 3);
+    console.log(toppingCopy);
+
     // find the index of Avocado with indexOf() / lastIndexOf()
+    // indexOf() will find the first instance of the serach criteria and lastIndexOf() finds the last instance.
+    const AvocadoIndex = toppings.indexOf("Avocado");
+    console.log(AvocadoIndex);
+
     // Check if hot sauce is in the toppings with includes()
+    // includes() is NOT case-sensitive
+    //console.log(toppings.includes("Hot Sauce"));
+    const isInToppings = toppings.includes("Hot Sauce");
+    console.log(isInToppings);
+
     // add it if it's not
+    //toppings.push("Hot Sauce");
+    if(!isInToppings) {
+        toppings.push("Hot Sauce");
+    }
+    console.log(toppings);
+
     // flip those toppings around with reverse()
+    //toppings.reverse();
+    //console.log(toppings);
+
+    const toppingsReversed = [...toppings].reverse();
+    console.log(toppingsReversed);
 
     /*
       Callback Methods
