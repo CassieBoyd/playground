@@ -138,13 +138,17 @@
     const toppingCopy = toppings.slice(0);
     toppings[0] = "Pork Chops";
     //console.log(toppings);
-    //console.log(toppingCopy);
+    console.log(toppingCopy);
 
     // Make a copy of the toppings array with a spread
     const spreadToppings = [...toppings];
     //console.log(spreadToppings);
 
     // take out items 3 to 5 of your new toppings array with splice()
+    // .splice takes two arguments, the index number to start at and how many index positions to remove
+    toppingCopy.splice(3, 3);
+    console.log(toppingCopy);
+
     // find the index of Avocado with indexOf() / lastIndexOf()
     // Check if hot sauce is in the toppings with includes()
     // add it if it's not
