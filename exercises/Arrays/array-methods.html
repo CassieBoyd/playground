@@ -182,11 +182,21 @@
     // find() returns the value of the first element that matches the provided testing function. find() takes a callback function for an argument
     // .includes() returns true or false
 
+    //function findBurgRating(singleFeedback) {
+      //  if(singleFeedback.comment.includes("burg")) {
+       //     return true;
+        //} else
+        //    return false;
+    //}
+
+    // Could also but put in an object to be used like a method.
+    //const util = {
+    //    findBurgRating: function (singleFeedback) {
+    //    return singleFeedback.comment.includes("burg");
+    //}
+
     function findBurgRating(singleFeedback) {
-        if(singleFeedback.comment.includes("burg")) {
-            return true;
-        } else
-            return false;
+        return singleFeedback.comment.includes("burg");
     }
 
     const burgerRating = feedback.find(findBurgRating);
