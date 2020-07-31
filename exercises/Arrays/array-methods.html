@@ -180,10 +180,13 @@
 
     // find the first rating that talks about a burger with find()
     // find() returns the value of the first element that matches the provided testing function. find() takes a callback function for an argument
+    // .includes() returns true or false
 
     function findBurgRating(singleFeedback) {
-        console.log(singleFeedback);
-        return true;
+        if(singleFeedback.comment.includes("burg")) {
+            return true;
+        } else
+            return false;
     }
 
     const burgerRating = feedback.find(findBurgRating);
