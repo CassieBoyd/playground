@@ -199,8 +199,16 @@
         return singleFeedback.comment.includes("burg");
     }
 
-    const burgerRating = feedback.find(findBurgRating);
-    console.log(burgerRating)
+    // Function that returns another function.
+    function findByWord(word) {
+        return function(singleFeedback) {
+            return singleFeedback.comment.includes(word);
+        }
+    }
+    const burgerFinder = feedback.find(findByWord("burg"));
+    const smoothieFinder = feedback.find(findByWord("smoothie"));
+
+    console.log(burgerFinder)
     // find all ratings that are above 2 with filter()
     // find all ratings that talk about a burger with filter()
     // Remove the one star rating however you like!
