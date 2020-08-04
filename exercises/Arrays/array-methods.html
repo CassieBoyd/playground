@@ -189,7 +189,7 @@
         //    return false;
     //}
 
-    // Could also but put in an object to be used like a method.
+    // Could also but put in an object to be used as a method.
     //const util = {
     //    findBurgRating: function (singleFeedback) {
     //    return singleFeedback.comment.includes("burg");
@@ -199,17 +199,30 @@
         return singleFeedback.comment.includes("burg");
     }
 
-    // Function that returns another function.
+    // A Higher-Order function is a function that receives a function as an argument or returns the function as output. A function that returns another function.
     function findByWord(word) {
         return function(singleFeedback) {
             return singleFeedback.comment.includes(word);
         }
     }
-    const burgerFinder = feedback.find(findByWord("burg"));
-    const smoothieFinder = feedback.find(findByWord("smoothie"));
 
-    console.log(burgerFinder)
+    // findByWord takes the searched word as an argument, 
+    const burgerRating = feedback.find(findByWord("the"));
+    const smoothieRating = feedback.find(findByWord("smoothie"));
+
+    console.log(burgerRating)
+
     // find all ratings that are above 2 with filter()
+    const goodReviews = feedback.filter(singleFeedback => {
+        if(singleFeedback.rating > 2) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    console.table(goodReviews);
+
     // find all ratings that talk about a burger with filter()
     // Remove the one star rating however you like!
 
