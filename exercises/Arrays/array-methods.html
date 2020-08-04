@@ -221,6 +221,10 @@
         }
     });
 
+    // Same as above but less verbose
+    const goodReviewsAlt = feedback.filter(singleFeedback => {
+        return singleFeedback.rating > 2;
+    });
     console.table(goodReviews);
 
     // find all ratings that talk about a burger with filter()
