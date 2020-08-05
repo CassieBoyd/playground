@@ -220,15 +220,28 @@
             return false;
         }
     });
+    console.table(goodReviews);
 
     // Same as above but less verbose
     const goodReviewsAlt = feedback.filter(singleFeedback => {
         return singleFeedback.rating > 2;
     });
-    console.table(goodReviews);
+    console.table(goodReviewsAlt);
+
+    function filterByMinRating(minRating) {
+        return function(singleFeedback) {
+            return singleFeedback.rating > minRating;
+        }
+    }
+    const goodReviewsHigherOrder = feedback.filter(filterByMinRating(2));
+    console.table(goodReviewsHigherOrder);
 
     // find all ratings that talk about a burger with filter()
+    const burgRatings = feedback.filter(findByWord("burg"));
+    console.table(burgRatings);
+
     // Remove the one star rating however you like!
+    
 
     // check if there is at least 5 of one type of meat with some()
     // make sure we have at least 3 of every meat with every()
