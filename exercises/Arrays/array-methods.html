@@ -241,7 +241,8 @@
     console.table(burgRatings);
 
     // Remove the one star rating however you like!
-    
+    const legitRatings = feedback.filter(single => single.rating !== 1);
+    console.table(legitRatings);
 
     // check if there is at least 5 of one type of meat with some()
     // make sure we have at least 3 of every meat with every()
