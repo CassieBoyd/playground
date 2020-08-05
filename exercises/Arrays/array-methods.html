@@ -257,7 +257,7 @@
     console.log(isThereAtLeastThreeOfEveryMeat);
 
     // sort the toppings alphabetically with sort()
-    // When sorting numbers you have to pass sort() a compare function. 
+    // When sorting numbers you have to pass sort() a callback function. 
     const numbers = [1,3,7,234,6,22,890];
     const numbersSorted = numbers.sort(function (firstItem, secondItem) {
         if (firstItem > secondItem) {
@@ -282,8 +282,22 @@
     console.log(alphaToppings);
 
     // sort the order totals from most expensive to least with .sort()
-    // Sort the prices with sort()
+    function numberSort(a, b) {
+        return a - b;
+    }
+    console.log(orderTotals.sort(numberSort));
 
+    // Sort the prices with sort()
+    const productsSortedByPrice = Object.entries(prices).sort(function (a, b) {
+        //debugger
+        const aPrice = a[1];
+        const bPrice = b[1];
+        return aPrice - bPrice;
+    });
+    console.table(productsSortedByPrice);
+
+    // Object.fromEntries turns nested arrays back into objects
+    console.log(Object.fromEntries(productsSortedByPrice));
     /*
       Looping Methods (next)
     */
