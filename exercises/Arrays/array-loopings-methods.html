@@ -129,11 +129,33 @@
       Looping Methods
     */
 
-    function logTopping(topping) {
+    function logTopping(topping, index, originalArray) {
+        console.log(topping, index, originalArray);
+        // Log the topping
         console.log(topping);
-        debugger;
+        // Log the previous topping if there is one
+        const prevTopping = originalArray[index - 1];
+        prevTopping ? console.log("Prev Top:", prevTopping) : "Goodbye";
+
+        // Log the next topping if there is one
+        const nextTopping = originalArray[index + 1];
+        if(nextTopping) {
+            console.log("Next Top:", nextTopping);
+        } else {
+            console.log("Goodbye");
+        }
+        // Ternary that does the same thing as if/else above
+        nextTopping ? console.log("Next Top:", nextTopping) : "Goodbye";
+
+        // If it's the last item in the array, say goodbye
+        console.log("------😺-------")
     }
     toppings.forEach(logTopping);
+
+    // Function is defined in the forEach instead of referencing it.
+    toppings.forEach(topping => {
+        console.log(topping);
+    })
 
   </script>
 </body>
