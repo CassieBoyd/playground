@@ -149,6 +149,9 @@
 
         // If it's the last item in the array, say goodbye
         index === originalArray.length - 1 ? console.log("Goodbye") : console.log("Getting next topping");
+
+        // The && operator checks the first conditional. If it's false the second conditional is ignored because both have to be true for it to execute. Once the first conditional resolves to true, the second conditional is checked. In this case I'm just logging to the console.
+        index === originalArray.length - 1 && console.log("Bye");
         console.log("------😺-------")
     }
     toppings.forEach(logTopping);
@@ -157,6 +160,8 @@
     toppings.forEach(topping => {
         console.log(topping);
     })
+
+    // forEach doesn't return anything
 
   </script>
 </body>
