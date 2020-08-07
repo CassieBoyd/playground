@@ -170,8 +170,12 @@
         return `✋ ${face} ✋`;
     }
 
+    // Map always returns the same number of array items as it was given
     const toys = faces.map(addArms);
     console.log(toys);
+
+    const fullNames = ["Cassie", "Ken", "Peach"].map(name => `${name} Boyd`);
+    console.log(fullNames);
 
   </script>
 </body>
