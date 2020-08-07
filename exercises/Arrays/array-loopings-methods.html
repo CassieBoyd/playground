@@ -174,7 +174,11 @@
     const toys = faces.map(addArms);
     console.log(toys);
 
-    const fullNames = ["Cassie", "Ken", "Peach"].map(name => `${name} Boyd`);
+    function boydify(name) {
+        return `${name} Boyd`;
+    }
+
+    const fullNames = ["Cassie", "Ken", "Peach"].map(boydify);
     console.log(fullNames);
 
   </script>
