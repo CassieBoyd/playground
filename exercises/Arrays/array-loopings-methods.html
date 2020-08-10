@@ -191,14 +191,20 @@
     const cleanPeople = people.map(function(person) {
         // Timestamp
         const birthday = new Date(person.birthday).getTime();
-        const now = new Date()
+        // Now timestamp
+        const now = Date.now();
         console.log(birthday, now);
-        const age = now - birthday;
+        const age = Math.floor((now - birthday) / 31536000000);
         console.log(age);
         // Calculate age
         // Return full name and birthday in an object
+        return {
+            age: age,
+            name: `${person.names.first} ${person.names.last}`,
+        }
     })
 
+    console.table(cleanPeople);
   </script>
 </body>
 
