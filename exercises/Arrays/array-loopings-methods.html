@@ -185,6 +185,20 @@
     const fullNames = ["Cassie", "Ken", "Peach"].map(capitalize).map(boydify);
     console.log(fullNames);
 
+    const orderTotalsWithTax = orderTotals.map(total => total * 1.07);
+    console.log(orderTotalsWithTax);
+
+    const cleanPeople = people.map(function(person) {
+        // Timestamp
+        const birthday = new Date(person.birthday).getTime();
+        const now = new Date()
+        console.log(birthday, now);
+        const age = now - birthday;
+        console.log(age);
+        // Calculate age
+        // Return full name and birthday in an object
+    })
+
   </script>
 </body>
 
