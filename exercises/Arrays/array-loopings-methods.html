@@ -214,7 +214,10 @@
         }
     });
 
+    const over40cond = cleanPeople.filter(person => person.age > 40 ? true : null);
+
     console.table(over40);
+    console.table(over40cond);
 
   </script>
 </body>
