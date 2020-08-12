@@ -253,6 +253,12 @@
 
     console.log(allOrders);
 
+    function inventoryReducer(totals, item) {
+        console.log(`Looping over ${item.type}`);
+    }
+
+    const inventoryCounts = inventory.reduce(inventoryReducer, {});
+
 
   </script>
 </body>
