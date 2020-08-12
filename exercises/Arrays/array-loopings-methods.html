@@ -257,14 +257,18 @@
         console.log(`Looping over ${item.type}`);
 
         // Increment the type by 1 or if none exist, assign it to 1
-        totals.shirt = totals.shirt + 1 || 1;
+        totals[item.type] = totals[item.type] + 1 || 1;
         // Return the totals so the next loop can use it
         return totals;
     }
 
+    // Starting with an empty object as starting value
     const inventoryCounts = inventory.reduce(inventoryReducer, {});
 
     console.log(inventoryCounts);
+
+    const totalInventoryPrice = inventory.reduce((acc, item) => acc + item.price, 0);
+    console.log(totalInventoryPrice)
 
   </script>
 </body>
