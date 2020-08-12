@@ -237,6 +237,23 @@
     console.log(student);
     console.log(student2);
 
+    console.clear();
+    // Reduce- takes in array of data and returns a result in the form of a single value. The second argument is the starting point.
+
+    // Whatever is returned from this function will be what the accumulator (tally) is equal to
+    function tallyNumbers(tally, currentTotal) {
+        console.log(`The current tally is ${tally}`);
+        console.log(`The current total is ${currentTotal}`);
+        console.log("------------------");
+
+        // Return the current tally plus the amount of the item being looped over
+        return tally + currentTotal;
+    }
+    const allOrders = orderTotals.reduce(tallyNumbers, 0);
+
+    console.log(allOrders);
+
+
   </script>
 </body>
 
