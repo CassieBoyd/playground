@@ -13,6 +13,113 @@
     // Grab all the text from a web page
     // Count how many times each letter and number occurs
 
+    const page = `
+    indexnext |previous | PyPA » Python Packaging User Guide » Discussions »
+Quick search
+  |
+Deploying Python applications
+Page Status
+Incomplete
+
+Last Reviewed
+2014-11-11
+
+Contents
+
+Overview
+
+Supporting multiple hardware platforms
+
+OS packaging & installers
+
+Windows
+
+Pynsist
+
+Application bundles
+
+Configuration management
+
+Overview
+Supporting multiple hardware platforms
+FIXME
+
+Meaning: x86, x64, ARM, others?
+
+For Python-only distributions, it *should* be straightforward to deploy on all
+platforms where Python can run.
+
+For distributions with binary extensions, deployment is major headache.  Not only
+must the extensions be built on all the combinations of operating system and
+hardware platform, but they must also be tested, preferably on continuous
+integration platforms.  The issues are similar to the "multiple Python
+versions" section above, not sure whether this should be a separate section.
+Even on Windows x64, both the 32 bit and 64 bit versions of Python enjoy
+significant usage.
+OS packaging & installers
+FIXME
+
+- Building rpm/debs for projects
+- Building rpms/debs for whole virtualenvs
+- Building macOS installers for Python projects
+- Building Android APKs with Kivy+P4A or P4A & Buildozer
+Windows
+FIXME
+
+- Building Windows installers for Python projects
+Pynsist
+Pynsist is a tool that bundles Python programs together with the Python-interpreter into a single installer based on NSIS. In most cases, packaging only requires the user to choose a version of the Python-interpreter and declare the dependencies of the program. The tool downloads the specified Python-interpreter for Windows and packages it with all the dependencies in a single Windows-executable installer.
+
+The installed program can be started from a shortcut that the installer adds to the start-menu. It uses a Python interpreter installed within its application directory, independent of any other Python installation on the computer.
+
+A big advantage of Pynsist is that the Windows packages can be built on Linux. There are several examples for different kinds of programs (console, GUI) in the documentation. The tool is released under the MIT-licence.
+
+Application bundles
+FIXME
+
+- py2exe/py2app/PEX
+- wheels kinda/sorta
+Configuration management
+FIXME
+
+puppet
+salt
+chef
+ansible
+fabric
+Table Of Contents
+An Overview of Packaging for Python
+Tutorials
+Guides
+Discussions
+Deploying Python applications
+pip vs easy_install
+install_requires vs requirements files
+Wheel vs Egg
+PyPA specifications
+Project Summaries
+Glossary
+How to Get Support
+Contribute to this guide
+News
+Previous topic
+Discussions
+
+Next topic
+pip vs easy_install
+
+«
+indexnext |previous | PyPA » Python Packaging User Guide » Discussions »
+Quick search
+  |
+© Copyright 2013–2019, PyPA.
+The Python Software Foundation is a non-profit corporation. Please donate.
+
+Last updated on Jun 26, 2020. Found a bug?
+Created using Sphinx 2.1.2.
+  v: latest 
+    `
+
 
   </script>
 </body>
