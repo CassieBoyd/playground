@@ -123,9 +123,9 @@ Created using Sphinx 2.1.2.
 // .split() splits the data into an array based on the argument provided which tells it where to make the splits. We want the individual characters so an empty string is passed as the argument.
 const characters = page.split("");
 
-// Square brackets in .match takes a group
+// Square brackets in .match takes a group or groups. Don't use spaces but use a dash to indicate the range of the group.
 const lettersAndNumbers = characters.filter(char => {
-    if(char.match(/[a-z]/)) {
+    if(char.match(/[a-zA-Z0-9]/)) {
         return true;
     } else {
         return false;
