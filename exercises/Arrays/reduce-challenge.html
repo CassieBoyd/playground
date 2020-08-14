@@ -122,7 +122,16 @@ Created using Sphinx 2.1.2.
 
 // .split() splits the data into an array based on the argument provided which tells it where to make the splits. We want the individual characters so an empty string is passed as the argument.
 const characters = page.split("");
-console.log(characters)
+
+// Square brackets in .match takes a group
+const lettersAndNumbers = characters.filter(char => {
+    if(char.match(/[a-z]/)) {
+        return true;
+    } else {
+        return false;
+    }
+})
+console.log(lettersAndNumbers)
 
   </script>
 </body>
