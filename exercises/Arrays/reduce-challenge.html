@@ -156,7 +156,14 @@ const lettersAndNumbers2 = page
     .map(lowercase) // Convert letters to lowercase
     .reduce(instanceCounter, {}); // Reducing the array to a tally
 
-console.log(lettersAndNumbers2);
+// a is previous value, b is next value. 
+function sortByValue(a, b) {
+    return a[1] - b[1];
+} 
+
+const sortedLettersAndNumbers2 = Object.entries(lettersAndNumbers2).sort(sortByValue);
+
+console.log(sortedLettersAndNumbers2);
 
   </script>
 </body>
