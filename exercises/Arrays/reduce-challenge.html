@@ -127,6 +127,13 @@ function isValidCharacter(char) {
     return char.match(/[a-zA-Z0-9]/);
 }
 
+function lowercase(char) {
+    return char.toLowerCase();
+}
+
+// Does the same thing as lowercase function above
+const toLowercase = char => char.toLowerCase();
+
 // Square brackets in .match takes a group or groups. Don't use spaces but use a dash to indicate the range of the group. Could use an i flag after the last forward slash to make the range case-insensitive to eliminate the need for the upparcase range notation. (/[a-z0-9]/i)
 const lettersAndNumbers = characters.filter(char => {
     if(char.match(/[a-zA-Z0-9]/)) {
@@ -137,7 +144,10 @@ const lettersAndNumbers = characters.filter(char => {
 })
 
 // Does the same thing as the original lettersAndNumbers but prettier because of isValidCharacter
-const lettersAndNumbers2 = characters.filter(isValidCharacter);
+const lettersAndNumbers2 = page
+    .split("") // Split each character into an item in the array
+    .filter(isValidCharacter) // Filters out all but numbers and letters
+    .map(lowercase) // Convert letters to lowercase
 
 console.log(lettersAndNumbers2);
 
