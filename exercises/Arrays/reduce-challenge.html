@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Reduce!</title>
+  <link rel="stylesheet" href="../../base.css">
+</head>
+
+<body>
+  <script>
+    // Grab all the text from a web page
+    // Count how many times each letter and number occurs
+
+    const page = `
+    indexnext |previous | PyPA » Python Packaging User Guide » Discussions »
+Quick search
+  |
+Deploying Python applications
+Page Status
+Incomplete
+
+Last Reviewed
+2014-11-11
+
+Contents
+
+Overview
+
+Supporting multiple hardware platforms
+
+OS packaging & installers
+
+Windows
+
+Pynsist
+
+Application bundles
+
+Configuration management
+
+Overview
+Supporting multiple hardware platforms
+FIXME
+
+Meaning: x86, x64, ARM, others?
+
+For Python-only distributions, it *should* be straightforward to deploy on all
+platforms where Python can run.
+
+For distributions with binary extensions, deployment is major headache.  Not only
+must the extensions be built on all the combinations of operating system and
+hardware platform, but they must also be tested, preferably on continuous
+integration platforms.  The issues are similar to the "multiple Python
+versions" section above, not sure whether this should be a separate section.
+Even on Windows x64, both the 32 bit and 64 bit versions of Python enjoy
+significant usage.
+OS packaging & installers
+FIXME
+
+- Building rpm/debs for projects
+- Building rpms/debs for whole virtualenvs
+- Building macOS installers for Python projects
+- Building Android APKs with Kivy+P4A or P4A & Buildozer
+Windows
+FIXME
+
+- Building Windows installers for Python projects
+Pynsist
+Pynsist is a tool that bundles Python programs together with the Python-interpreter into a single installer based on NSIS. In most cases, packaging only requires the user to choose a version of the Python-interpreter and declare the dependencies of the program. The tool downloads the specified Python-interpreter for Windows and packages it with all the dependencies in a single Windows-executable installer.
+
+The installed program can be started from a shortcut that the installer adds to the start-menu. It uses a Python interpreter installed within its application directory, independent of any other Python installation on the computer.
+
+A big advantage of Pynsist is that the Windows packages can be built on Linux. There are several examples for different kinds of programs (console, GUI) in the documentation. The tool is released under the MIT-licence.
+
+Application bundles
+FIXME
+
+- py2exe/py2app/PEX
+- wheels kinda/sorta
+Configuration management
+FIXME
+
+puppet
+salt
+chef
+ansible
+fabric
+Table Of Contents
+An Overview of Packaging for Python
+Tutorials
+Guides
+Discussions
+Deploying Python applications
+pip vs easy_install
+install_requires vs requirements files
+Wheel vs Egg
+PyPA specifications
+Project Summaries
+Glossary
+How to Get Support
+Contribute to this guide
+News
+Previous topic
+Discussions
+
+Next topic
+pip vs easy_install
+
+«
+indexnext |previous | PyPA » Python Packaging User Guide » Discussions »
+Quick search
+  |
+© Copyright 2013–2019, PyPA.
+The Python Software Foundation is a non-profit corporation. Please donate.
+
+Last updated on Jun 26, 2020. Found a bug?
+Created using Sphinx 2.1.2.
+  v: latest 
+    `;
+
+// .split() splits the data into an array based on the argument provided which tells it where to make the splits. We want the individual characters so an empty string is passed as the argument.
+const characters = page.split("");
+
+function isValidCharacter(char) {
+    return char.match(/[a-zA-Z0-9]/);
+}
+
+function lowercase(char) {
+    return char.toLowerCase();
+}
+
+// Does the same thing as lowercase function above
+const toLowercase = char => char.toLowerCase();
+
+// If the character count exists, increment it to 1. Else, set it to 1.
+function instanceCounter(count, char) {
+    count[char] ? count[char] = count[char] + 1 : count[char] = 1;
+    return count;
+}
+
+// Square brackets in .match takes a group or groups. Don't use spaces but use a dash to indicate the range of the group. Could use an i flag after the last forward slash to make the range case-insensitive to eliminate the need for the upparcase range notation. (/[a-z0-9]/i)
+const lettersAndNumbers = characters.filter(char => {
+    if(char.match(/[a-zA-Z0-9]/)) {
+        return true;
+    } else {
+        return false;
+    }
+})
+
+// Does the same thing as the original lettersAndNumbers but prettier because of isValidCharacter
+const lettersAndNumbers2 = page
+    .split("") // Split each character into an item in the array
+    .filter(isValidCharacter) // Filters out all but numbers and letters
+    .map(lowercase) // Convert letters to lowercase
+    .reduce(instanceCounter, {}); // Reducing the array to a tally
+
+// a is previous value, b is next value. 
+function sortByValue(a, b) {
+    return a[1] - b[1];
+} 
+
+const sortedLettersAndNumbers2 = Object.entries(lettersAndNumbers2).sort(sortByValue);
+
+console.log(sortedLettersAndNumbers2);
+
+  </script>
+</body>
+
+</html>
