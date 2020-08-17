@@ -123,7 +123,11 @@ Created using Sphinx 2.1.2.
 // .split() splits the data into an array based on the argument provided which tells it where to make the splits. We want the individual characters so an empty string is passed as the argument.
 const characters = page.split("");
 
-// Square brackets in .match takes a group or groups. Don't use spaces but use a dash to indicate the range of the group.
+function isValidCharacter(char) {
+    return char.match(/[a-zA-Z0-9]/);
+}
+
+// Square brackets in .match takes a group or groups. Don't use spaces but use a dash to indicate the range of the group. Could use an i flag after the last forward slash to make the range case-insensitive to eliminate the need for the upparcase range notation. (/[a-z0-9]/i)
 const lettersAndNumbers = characters.filter(char => {
     if(char.match(/[a-zA-Z0-9]/)) {
         return true;
@@ -131,7 +135,11 @@ const lettersAndNumbers = characters.filter(char => {
         return false;
     }
 })
-console.log(lettersAndNumbers)
+
+// Does the same thing as the original lettersAndNumbers but prettier because of isValidCharacter
+const lettersAndNumbers2 = characters.filter(isValidCharacter);
+
+console.log(lettersAndNumbers2);
 
   </script>
 </body>
