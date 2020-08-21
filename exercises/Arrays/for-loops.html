@@ -14,6 +14,12 @@
 
     const name = 'Wes Bos💇‍♀️🎃👻🧛‍♂️';
 
+    const cassie = {
+        name: "Cassie",
+        age: 89,
+        costumer: true,
+    }
+
     // For
     // For this data set, if this condition is true increment the counter and execute the code block.
     for(let i = 0; i <= 10; i++) {
@@ -41,7 +47,52 @@
         console.log(number);
     }
 
+    for(const prop in cassie) {
+        console.log(prop)
+    }
+
+    const baseHumanStats = {
+        head:1,
+        eyes:2,
+        arms: 2,
+        feet:2,
+    }
+
+    function human(name) {
+        this.name = name;
+    }
+
+    // .prototype assigns the key/value pairs of baseHumanStats to human so that whenever it's called each human has the proper number of appendages associated with it.
+    human.prototype = baseHumanStats;
+
+    const ken = new human("Ken");
+
+    console.log(Object.keys(ken)); // "name"
+    console.log(Object.entries(ken)); // Array of keys and values but doesn't reach to prototype.
+
+    // Grabs all keys, even from prototype
+    for(const prop in ken) {
+        console.log(prop);
+    }
+
     // While Loop
+    // Takes a condition and will run infinitely until the condition is false.
+
+    let cool = true;
+    let i = 0;
+    while(cool === true) {
+        console.log("You are cool");
+        i++;
+        if(i > 100) {
+            cool = false;
+        }
+    }
+
+    // Do While
+    // Do runs first then the condition is checked
+    do {
+
+    } while()
   </script>
 </body>
 
