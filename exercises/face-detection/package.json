@@ -1,8 +1,8 @@
 {
-  "name": "pixelated-face",
+  "name": "pixilated-face",
   "version": "1.0.0",
   "description": "",
-  "main": "pixelated-face.js",
+  "main": "pixilated-face.js",
   "scripts": {
     "start": "parcel face.html"
   },
