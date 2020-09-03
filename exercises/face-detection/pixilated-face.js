@@ -15,6 +15,18 @@ async function populateVideo() {
     })
     video.srcObject = stream;
     await video.play();
+    // Size canvases to match video
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    faceCanvas.width = video.videoWidth;
+    faceCanvas.height = video.videoHeight;
 }
 
-populateVideo();
+async function detect() {
+    const faces = await faceDetector.detect(video);
+    console.log(faces.length);
+    // Ask browser when next animation frame is and tell it ro run detect
+    requestAnimationFrame();
+}
+
+populateVideo().then(detect);
