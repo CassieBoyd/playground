@@ -8,16 +8,18 @@ const faceCtx = faceCanvas.getContext("2d");
 
 const faceDetector = new window.FaceDetector();
 
+const optionsInputs = document.querySelectorAll('.controls input[type="range"]');
+
 const options = {
     SIZE: 10, // Any variables that are constant throughout the application are typically named in all caps when working with canvas.
     SCALE: 1.35
 }
 
 function handleOption(event) {
-    console.log(event.currentTarget.value)
+    console.log(event.currentTarget.value);
+    const { value, name } = event.currentTarget;
+    options[name] = parseFloat(value);
 }
-
-const optionsInputs = document.querySelector('.controls input[type="range"]');
 
 optionsInputs.forEach(input => input.addEventListener("input", handleOption));
 
