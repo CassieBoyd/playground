@@ -413,7 +413,7 @@ const video = document.querySelector(".webcam");
 const canvas = document.querySelector(".video");
 const ctx = canvas.getContext("2d");
 const faceCanvas = document.querySelector(".face");
-const faceCtx = canvas.getContext("2d");
+const faceCtx = faceCanvas.getContext("2d");
 const faceDetector = new window.FaceDetector();
 const SIZE = 10; // Any variables that are constant throughout the application are typically named in all caps when working with canvas.
 // Get users' video feed
@@ -478,7 +478,13 @@ function censor({
   SIZE // Where to stop drawing on height
   ); // Take small face and draw back at normal size 
 
-  faceCtx.drawImage(faceCanvas);
+  faceCtx.drawImage(faceCanvas, // Source
+  face.x, // Where the source pull starts on x-axis
+  face.y, // Where the source pull starts on y-axis
+  SIZE, // Where to stop drawing on width
+  SIZE, // Where to stop drawing on height
+  // Draw arguments
+  face.x, face.y, face.width, face.height);
 }
 
 populateVideo().then(detect);
