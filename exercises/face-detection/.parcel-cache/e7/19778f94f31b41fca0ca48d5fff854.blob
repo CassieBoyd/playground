@@ -1,4 +1,0 @@
-const video = document.querySelector(".webcam");
-const canvas = document.querySelector(".video");
-const ctx = canvas.getC;
-const faceCanvas = document.querySelector(".face");
