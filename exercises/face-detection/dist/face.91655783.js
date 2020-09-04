@@ -412,8 +412,6 @@ function hmrAcceptRun(bundle, id) {
 const video = document.querySelector(".webcam");
 const canvas = document.querySelector(".video");
 const ctx = canvas.getContext("2d");
-ctx.strokeStyle = "#ffc600";
-ctx.lineWidth = 2;
 const faceCanvas = document.querySelector(".face");
 const faceCtx = canvas.getContext("2d");
 const faceDetector = new window.FaceDetector(); // Get users' video feed
@@ -443,19 +441,21 @@ async function detect() {
 }
 
 function drawFace(face) {
+  // Grabbing the values for the face location
   const {
     width,
     height,
     top,
     left
-  } = face.boundingBox;
+  } = face.boundingBox; // Clearing the previous boxes from the canvas
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Setting the color of the box
+
+  ctx.strokeStyle = "#03dffc"; // Setting the line width of the box
+
+  ctx.lineWidth = 2; // Drawing the rectangle with the detected values
+
   ctx.strokeRect(left, top, width, height);
-  console.log({
-    width,
-    height,
-    top,
-    left
-  });
 }
 
 populateVideo().then(detect);
