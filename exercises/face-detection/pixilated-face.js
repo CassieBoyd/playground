@@ -2,6 +2,8 @@ const video = document.querySelector(".webcam");
 
 const canvas = document.querySelector(".video");
 const ctx = canvas.getContext("2d");
+ctx.strokeStyle = "#ffc600";
+ctx.lineWidth = 2;
 
 const faceCanvas = document.querySelector(".face");
 const faceCtx = canvas.getContext("2d");
@@ -27,11 +29,12 @@ async function detect() {
     console.log(faces.length);
     // Ask browser when next animation frame is and tell it to run detect
     faces.forEach(drawFace);
-    requestAnimationFrame(detect);
+    requestAnimationFrame();
 }
 
 function drawFace(face) {
     const { width, height, top, left } = face.boundingBox;
+    ctx.strokeRect(left, top, width, height);
     console.log({ width, height, top, left });
 }
 

@@ -439,7 +439,7 @@ async function detect() {
   console.log(faces.length); // Ask browser when next animation frame is and tell it to run detect
 
   faces.forEach(drawFace);
-  requestAnimationFrame();
+  requestAnimationFrame(detect);
 }
 
 function drawFace(face) {

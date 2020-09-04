@@ -412,8 +412,7 @@ function hmrAcceptRun(bundle, id) {
 const video = document.querySelector(".webcam");
 const canvas = document.querySelector(".video");
 const ctx = canvas.getContext("2d");
-ctx.strokeStyle = "#ffc600";
-ctx.lineWidth = 2;
+ctx.strokeStyle = "Y";
 const faceCanvas = document.querySelector(".face");
 const faceCtx = canvas.getContext("2d");
 const faceDetector = new window.FaceDetector(); // Get users' video feed
@@ -449,7 +448,6 @@ function drawFace(face) {
     top,
     left
   } = face.boundingBox;
-  ctx.strokeRect(left, top, width, height);
   console.log({
     width,
     height,

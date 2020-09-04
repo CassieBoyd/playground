@@ -449,7 +449,7 @@ function drawFace(face) {
     top,
     left
   } = face.boundingBox;
-  ctx.strokeRect(left, top, width, height);
+  ctx.str;
   console.log({
     width,
     height,
