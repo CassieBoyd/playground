@@ -10,6 +10,8 @@ const faceDetector = new window.FaceDetector();
 
 const SIZE = 10; // Any variables that are constant throughout the application are typically named in all caps when working with canvas.
 
+const SCALE = 1.5;
+
 // Get users' video feed
 async function populateVideo() {
     const stream = await navigator.mediaDevices.getUserMedia({
@@ -30,7 +32,7 @@ async function detect() {
     // Ask browser when next animation frame is and tell it to run detect
     faces.forEach(drawFace);
     faces.forEach(censor);
-    requestAnimationFrame();
+    requestAnimationFrame(detect);
 }
 
 function drawFace(face) {
@@ -47,6 +49,8 @@ function drawFace(face) {
 }
 
 function censor({ boundingBox: face }) {
+faceCtx.imageSmoothingEnabled = false;
+faceCtx.clearRect(0, 0, faceCanvas.width, faceCanvas.height);
     // Draw small face
     faceCtx.drawImage(
         // 5 source arguments
@@ -62,6 +66,9 @@ function censor({ boundingBox: face }) {
         SIZE // Where to stop drawing on height
         );
     // Take small face and draw back at normal size 
+    const width = face.width * SCALE;
+    const height = face.height * SCALE;
+
     faceCtx.drawImage(
         faceCanvas, // Source
         face.x, // Where the source pull starts on x-axis
@@ -71,8 +78,8 @@ function censor({ boundingBox: face }) {
         // Draw arguments
         face.x,
         face.y,
-        face.width,
-        face.height
+        width,
+        height
     );
 }
 

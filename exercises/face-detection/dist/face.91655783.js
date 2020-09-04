@@ -416,7 +416,8 @@ const faceCanvas = document.querySelector(".face");
 const faceCtx = faceCanvas.getContext("2d");
 const faceDetector = new window.FaceDetector();
 const SIZE = 10; // Any variables that are constant throughout the application are typically named in all caps when working with canvas.
-// Get users' video feed
+
+const SCALE = 1.5; // Get users' video feed
 
 async function populateVideo() {
   const stream = await navigator.mediaDevices.getUserMedia({
@@ -440,7 +441,7 @@ async function detect() {
 
   faces.forEach(drawFace);
   faces.forEach(censor);
-  requestAnimationFrame();
+  requestAnimationFrame(detect);
 }
 
 function drawFace(face) {
@@ -464,7 +465,9 @@ function drawFace(face) {
 function censor({
   boundingBox: face
 }) {
-  // Draw small face
+  faceCtx.imageSmoothingEnabled = false;
+  faceCtx.clearRect(0, 0, faceCanvas.width, faceCanvas.height); // Draw small face
+
   faceCtx.drawImage( // 5 source arguments
   video, // Where source comes from
   face.x, // Where the source pull starts on x-axis
@@ -478,13 +481,15 @@ function censor({
   SIZE // Where to stop drawing on height
   ); // Take small face and draw back at normal size 
 
+  const width = face.width * SCALE;
+  const height = face.height * SCALE;
   faceCtx.drawImage(faceCanvas, // Source
   face.x, // Where the source pull starts on x-axis
   face.y, // Where the source pull starts on y-axis
   SIZE, // Where to stop drawing on width
   SIZE, // Where to stop drawing on height
   // Draw arguments
-  face.x, face.y, face.width, face.height);
+  face.x, face.y, width, height);
 }
 
 populateVideo().then(detect);
