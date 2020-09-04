@@ -477,6 +477,8 @@ function censor({
   SIZE, // Where to stop drawing on width
   SIZE // Where to stop drawing on height
   ); // Take small face and draw back at normal size 
+
+  faceCtx.drawImage(faceCanvas);
 }
 
 populateVideo().then(detect);
