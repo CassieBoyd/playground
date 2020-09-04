@@ -447,12 +447,7 @@ function drawFace(face) {
     top,
     left
   } = face.boundingBox;
-  console.log({
-    width,
-    height,
-    top,
-    left
-  });
+  cons;
 }
 
 populateVideo().then(detect);

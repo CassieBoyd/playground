@@ -441,18 +441,7 @@ async function detect() {
 }
 
 function drawFace(face) {
-  const {
-    width,
-    height,
-    top,
-    left
-  } = face.boundingBox;
-  console.log({
-    width,
-    height,
-    top,
-    left
-  });
+  console.log(face);
 }
 
 populateVideo().then(detect);
