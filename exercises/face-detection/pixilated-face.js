@@ -8,9 +8,20 @@ const faceCtx = faceCanvas.getContext("2d");
 
 const faceDetector = new window.FaceDetector();
 
-const SIZE = 10; // Any variables that are constant throughout the application are typically named in all caps when working with canvas.
+const options = {
+    SIZE: 10, // Any variables that are constant throughout the application are typically named in all caps when working with canvas.
+    SCALE: 1.35
+}
 
-const SCALE = 1.5;
+function handleOption(event) {
+    console.log(event.currentTarget.value)
+}
+
+const optionsInputs = document.querySelector('.controls input[type="range"]');
+
+optionsInputs.forEach(input => input.addEventListener("input", handleOption));
+
+
 
 // Get users' video feed
 async function populateVideo() {
@@ -62,22 +73,22 @@ faceCtx.clearRect(0, 0, faceCanvas.width, faceCanvas.height);
         // 4 draw arguments
         face.x, // Where to start drawing on x-axis
         face.y, // Where to start drawing on y-axis
-        SIZE, // Where to stop drawing on width
-        SIZE // Where to stop drawing on height
+        options.SIZE, // Where to stop drawing on width
+        options.SIZE // Where to stop drawing on height
         );
     // Take small face and draw back at normal size 
-    const width = face.width * SCALE;
-    const height = face.height * SCALE;
+    const width = face.width * options.SCALE;
+    const height = face.height * options.SCALE;
 
     faceCtx.drawImage(
         faceCanvas, // Source
         face.x, // Where the source pull starts on x-axis
         face.y, // Where the source pull starts on y-axis
-        SIZE, // Where to stop drawing on width
-        SIZE, // Where to stop drawing on height
+        options.SIZE, // Where to stop drawing on width
+        options.SIZE, // Where to stop drawing on height
         // Draw arguments
-        face.x,
-        face.y,
+        face.x - (width - face.width) / 2,
+        face.y - (height - face.height) / 2,
         width,
         height
     );
