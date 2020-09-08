@@ -2,16 +2,14 @@ const textArea = document.querySelector('[name="text"]');
 const result = document.querySelector(".result");
 const filterInputs = document.querySelectorAll('[name="filter"]');
 
-function transformText(text) {
-    // Take the text and loop over each letter
-    const mod = Array.from(text).map(filters.sarcastic);
-    result.textContent = text;
-}
-
 const filters = {
     sarcastic: function(letter, index){ 
-        console.log(letter, index);
-        return letter;
+        // If this statement doesn't return 0, it triggers and upper cases the letter
+        if(index % 2) {
+            return letter.toUpperCase();
+        }
+        // If the previous statement returns 0, this code will run instead and the letter will be lower cased
+        return letter.toLowerCase();
     },
     funky: function(){ 
 
@@ -20,5 +18,13 @@ const filters = {
 
     },
 }
+
+function transformText(text) {
+    // Take the text and loop over each letter
+    const mod = Array.from(text).map(filters.sarcastic);
+    console.log(mod);
+    result.textContent = text;
+}
+
 
 textArea.addEventListener("input", e => transformText(e.target.value));
