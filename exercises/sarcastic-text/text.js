@@ -21,13 +21,19 @@ const filters = {
         // Check if there is a funky letter for this case
         let funkyLetter = funkyLetters[letter];
         if(funkyLetter) return funkyLetter;
+
         // If not, check if there's a lower case version
+        funkyLetter = funkyLetters[letter.toLowerCase()];
+        if(funkyLetter) return funkyLetter;
+
         // If there's nothing, return the regular letter
-        
         return letter;
     },
-    unable: function(){ 
-
+    unable: function(letter){ 
+        const random = Math.floor(Math.random() * 3);
+        if(letter === " " && random === 2) {
+            return "...";
+        } else return letter;
     },
 }
 
@@ -41,9 +47,14 @@ function transformText(text) {
 
     // Take the text and loop over each letter
     const mod = Array.from(text).map(filters[filter]);
-    console.log(mod);
+    //console.log(mod);
     result.textContent = mod.join("");
 }
 
 
 textArea.addEventListener("input", e => transformText(e.target.value));
+
+filterInputs.forEach(input => 
+    input.addEventListener("input", () => {
+        transformText(textArea.value);
+}))
