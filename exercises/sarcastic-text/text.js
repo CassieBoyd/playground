@@ -20,10 +20,13 @@ const filters = {
 }
 
 function transformText(text) {
+    // Targets the radio buttons and grabs the value of the checked selection
+    const filter = document.querySelector('[name="filter"]:checked').value;
+    console.log(filter)
     // Take the text and loop over each letter
     const mod = Array.from(text).map(filters.sarcastic);
     console.log(mod);
-    result.textContent = text;
+    result.textContent = mod.join("");
 }
 
 
