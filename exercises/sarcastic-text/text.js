@@ -1,6 +1,6 @@
 const textArea = document.querySelector('[name="text"]');
 const result = document.querySelector(".result");
-const filterInputs = document.querySelectorAll('[name="filter"]');
+const filterInputs = Array.from(document.querySelectorAll('[name="filter"]'));
 
 const filters = {
     sarcastic: function(letter, index){ 
@@ -21,10 +21,14 @@ const filters = {
 
 function transformText(text) {
     // Targets the radio buttons and grabs the value of the checked selection
-    const filter = document.querySelector('[name="filter"]:checked').value;
-    console.log(filter)
+    //const filter = document.querySelector('[name="filter"]:checked').value;
+
+    // Does the same thing as the line above
+    const filter = filterInputs.find(input => input.checked).value;
+    //console.log(filter)
+
     // Take the text and loop over each letter
-    const mod = Array.from(text).map(filters.sarcastic);
+    const mod = Array.from(text).map(filters[filter]);
     console.log(mod);
     result.textContent = mod.join("");
 }
