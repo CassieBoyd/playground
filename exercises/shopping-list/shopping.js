@@ -16,6 +16,19 @@ function handleSubmit(e) {
     // Push items into state
     items.push(item);
     console.log(`There are now ${items.length} items in your state`);
+
+    // Clear the form
+    // .reset() will clear an entire form
+    e.target.reset();
+    displayItems();
+}
+
+function displayItems() {
+    console.log(items)
+    const html = items.map(item => {
+        return `<li>${item.name}</li>`
+    }).join("");
+    list.innerHTML = html;
 }
 
 shoppingForm.addEventListener("submit", handleSubmit);
