@@ -8,7 +8,14 @@ function handleSubmit(e) {
     e.preventDefault();
     console.log("Submitted");
     const name = e.currentTarget.item.value;
-    console.log(name);
+    const item = {
+        name: name,
+        id: Date.now(),
+        complete: false,
+    };
+    // Push items into state
+    items.push(item);
+    console.log(`There are now ${items.length} items in your state`);
 }
 
 shoppingForm.addEventListener("submit", handleSubmit);
