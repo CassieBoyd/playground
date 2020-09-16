@@ -8,6 +8,10 @@ function handleSubmit(e) {
     e.preventDefault();
     console.log("Submitted");
     const name = e.currentTarget.item.value;
+
+    // Function won't run if input is empty
+    if(!name) return;
+
     const item = {
         name: name,
         id: Date.now(),
@@ -20,7 +24,8 @@ function handleSubmit(e) {
     // Clear the form
     // .reset() will clear an entire form
     e.target.reset();
-    displayItems();
+    // Trigger custom event that tells an event listener that the items have been updated
+    list.dispatchEvent(new CustomEvent("itemsUpdated"));
 }
 
 function displayItems() {
@@ -36,3 +41,4 @@ function displayItems() {
 }
 
 shoppingForm.addEventListener("submit", handleSubmit);
+list.addEventListener("itemsUpdated", displayItems);
