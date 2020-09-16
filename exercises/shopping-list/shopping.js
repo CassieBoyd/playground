@@ -26,8 +26,12 @@ function handleSubmit(e) {
 function displayItems() {
     console.log(items)
     const html = items.map(item => {
-        return `<li>${item.name}</li>`
-    }).join("");
+        return `<li class="shopping-item">
+        <input type="checkbox">
+        <span class="itemName">${item.name}</span>
+        <button aria-label="Remove ${item.name}">&times;</button>
+        </li>`
+        }).join("");
     list.innerHTML = html;
 }
 
