@@ -40,5 +40,12 @@ function displayItems() {
     list.innerHTML = html;
 }
 
+// Local storage is text-only
+function mirrorToLocalStorage() {
+    console.info("Saving to local storage");
+    localStorage.setItem("items", JSON.stringify(items));
+}
+
 shoppingForm.addEventListener("submit", handleSubmit);
 list.addEventListener("itemsUpdated", displayItems);
+list.addEventListener("itemsUpdated", mirrorToLocalStorage);
