@@ -46,6 +46,19 @@ function mirrorToLocalStorage() {
     localStorage.setItem("items", JSON.stringify(items));
 }
 
+function restoreFromLocalStorage() {
+    console.info("Restoring from local storage");
+
+    // Pull items from local storage
+    const lsItems = JSON.parse(localStorage.getItem("items"));
+    if (lsItems.length) {
+        items.push(...lsItems);
+        list.dispatchEvent(new CustomEvent("itemsUpdated"));
+    }
+}
+
 shoppingForm.addEventListener("submit", handleSubmit);
 list.addEventListener("itemsUpdated", displayItems);
 list.addEventListener("itemsUpdated", mirrorToLocalStorage);
+
+restoreFromLocalStorage();
