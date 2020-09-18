@@ -4,3 +4,5 @@
 .parcel-cache
 .vscode
 .DS_Store
+.cache
+dist
