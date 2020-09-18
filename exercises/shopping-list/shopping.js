@@ -32,7 +32,7 @@ function displayItems() {
     console.log(items)
     const html = items.map(item => {
         return `<li class="shopping-item">
-        <input type="checkbox">
+        <input type="checkbox" value="${item.id}" ${item.complete ? "checked" : ""}>
         <span class="itemName">${item.name}</span>
         <button aria-label="Remove ${item.name}" value="${item.id}">&times;</button>
         </li>`
@@ -61,7 +61,14 @@ function deleteItem(id) {
     console.log("Deleted", id);
     // Update items array without this one
     items = items.filter(item => item.id !== id);
-    console.log(items)
+    console.log(items);
+    list.dispatchEvent(new CustomEvent("itemsUpdated"));
+}
+
+function markAsComplete(id) {
+    console.log("Completed", id);
+    const itemRef = items.find(item => item.id === id);
+    itemRef.complete = !itemRef.complete;
     list.dispatchEvent(new CustomEvent("itemsUpdated"));
 }
 
@@ -71,8 +78,12 @@ list.addEventListener("itemsUpdated", mirrorToLocalStorage);
 
 // Event delegation: listen for the click on the <ul> tag but delegate the click over to the button if that's what was clicked
 list.addEventListener("click", function(e) {
+    const id = parseInt(e.target.value);
     if(e.target.matches("button")) {
-        deleteItem(parseInt(e.target.value));
+        deleteItem(id);
+    }
+    if(e.target.matches('input[type="checkbox"]')) {
+        markAsComplete(id);
     }
 })
 
