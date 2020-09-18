@@ -34,7 +34,7 @@ function displayItems() {
         return `<li class="shopping-item">
         <input type="checkbox">
         <span class="itemName">${item.name}</span>
-        <button aria-label="Remove ${item.name}">&times;</button>
+        <button aria-label="Remove ${item.name}" value="${item.id}">&times;</button>
         </li>`
         }).join("");
     list.innerHTML = html;
@@ -57,8 +57,19 @@ function restoreFromLocalStorage() {
     }
 }
 
+function deleteItem(id) {
+    console.log("Deleted", id);
+}
+
 shoppingForm.addEventListener("submit", handleSubmit);
 list.addEventListener("itemsUpdated", displayItems);
 list.addEventListener("itemsUpdated", mirrorToLocalStorage);
+
+// Event delegation: listen for the click on the <ul> tag but delegate the click over to the button if that's what was clicked
+list.addEventListener("click", function(e) {
+    if(e.target.matches("button")) {
+        deleteItem(e.target.value);
+    }
+})
 
 restoreFromLocalStorage();
