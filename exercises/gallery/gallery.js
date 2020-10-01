@@ -9,6 +9,18 @@ function Gallery(gallery) {
     const modal = document.querySelector(".modal");
     const prevButton = modal.querySelector(".prev");
     const nextButton = modal.querySelector(".next");
+    let currentImage;
+
+    function openModal() {
+        console.info("Opening modal...");
+
+        // Check if modal is already open
+        if(modal.matches(".open")) {
+            console.info("Modal already open");
+            return; // Stops function from running
+        }
+        modal.classList.add("open");
+    }
 
     function showImage(el) {
         if(!el) {
@@ -16,7 +28,13 @@ function Gallery(gallery) {
             return
         }
         // Update modal
-        console.log(el)
+        console.log(el);
+
+        modal.querySelector("img").src = el.src;
+        modal.querySelector("h2").textContent = el.title;
+        modal.querySelector("figure p").textContent = el.dataset.description;
+        currentImage = el;
+        openModal();
     }
 
     //function handleImageClick(event) {
