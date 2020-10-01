@@ -19,12 +19,15 @@ function Gallery(gallery) {
         console.log(el)
     }
 
-    function handleImageClick(event) {
-        showImage(event.currentTarget);
-    }
+    //function handleImageClick(event) {
+    //    showImage(event.currentTarget);
+    //}
 
     // Looping over images array and adding event listeners
-    images.forEach(image => image.addEventListener("click", handleImageClick))
+    // images.forEach(image => image.addEventListener("click", handleImageClick))
+
+    // Refactored- does same thing as above lines
+    images.forEach(image => image.addEventListener("click", (event) => showImage(event.currentTarget)))
 }
 
 const gallery1 = Gallery(document.querySelector(".gallery1"));
