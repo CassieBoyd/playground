@@ -27,6 +27,10 @@ function Gallery(gallery) {
         // Add event listeners for clicks and keyboard
     }
 
+    function handleKeyUp(event) {
+        if(event.key === "Escape") closeModal();
+    }
+
     function handleClickOutside(event) {
         if(event.target === event.currentTarget) {
             closeModal();
@@ -59,6 +63,7 @@ function Gallery(gallery) {
     images.forEach(image => image.addEventListener("click", (event) => showImage(event.currentTarget)));
 
     modal.addEventListener("click", handleClickOutside);
+    window.addEventListener("keyup", handleKeyUp);
 }
 
 const gallery1 = Gallery(document.querySelector(".gallery1"));
