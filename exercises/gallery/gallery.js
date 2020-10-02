@@ -20,15 +20,26 @@ function Gallery(gallery) {
             return; // Stops function from running
         }
         modal.classList.add("open");
+
+        // Event listeners to be bound when modal is opened
+        window.addEventListener("keyup", handleKeyUp);
+        nextButton.addEventListener("click", showNextImage);
     }
 
     function closeModal() {
         modal.classList.remove("open");
         // Add event listeners for clicks and keyboard
+
+        window.removeEventListener("keyup", handleKeyUp);
+        nextButton.removeEventListener("click", showNextImage);
     }
 
     function handleKeyUp(event) {
         if(event.key === "Escape") closeModal();
+    }
+
+    function showNextImage() {
+        showImage(currentImage.nextElementSibling);
     }
 
     function handleClickOutside(event) {
@@ -63,7 +74,6 @@ function Gallery(gallery) {
     images.forEach(image => image.addEventListener("click", (event) => showImage(event.currentTarget)));
 
     modal.addEventListener("click", handleClickOutside);
-    window.addEventListener("keyup", handleKeyUp);
 }
 
 const gallery1 = Gallery(document.querySelector(".gallery1"));
