@@ -37,9 +37,9 @@ function Gallery(gallery) {
     }
 
     function handleKeyUp(event) {
-        if(event.key === "Escape") closeModal();
-        if(event.key === "ArrowRight") showNextImage();
-        if(event.key === "ArrowLeft") showPreviousImage();
+        if(event.key === "Escape") return closeModal();
+        if(event.key === "ArrowRight") return showNextImage();
+        if(event.key === "ArrowLeft") return showPreviousImage();
     }
 
     function showNextImage() {
@@ -80,6 +80,18 @@ function Gallery(gallery) {
 
     // Refactored- does same thing as above lines
     images.forEach(image => image.addEventListener("click", (event) => showImage(event.currentTarget)));
+
+    // Loop over each image
+    images.forEach(image => {
+        // Add event listener on each image
+        image.addEventListener("keyup", event => {
+            // When keyUp is sensed, check if key was Enter
+            if(event.key === "Enter") {
+                // If it was, show that image
+                showImage(event.currentTarget);
+            }
+        })
+    })
 
     modal.addEventListener("click", handleClickOutside);
 }
