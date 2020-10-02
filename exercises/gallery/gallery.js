@@ -24,6 +24,7 @@ function Gallery(gallery) {
         // Event listeners to be bound when modal is opened
         window.addEventListener("keyup", handleKeyUp);
         nextButton.addEventListener("click", showNextImage);
+        prevButton.addEventListener("click", showPreviousImage);
     }
 
     function closeModal() {
@@ -32,6 +33,7 @@ function Gallery(gallery) {
 
         window.removeEventListener("keyup", handleKeyUp);
         nextButton.removeEventListener("click", showNextImage);
+        prevButton.removeEventListener("click", showPreviousImage);
     }
 
     function handleKeyUp(event) {
@@ -39,7 +41,11 @@ function Gallery(gallery) {
     }
 
     function showNextImage() {
-        showImage(currentImage.nextElementSibling);
+        showImage(currentImage.nextElementSibling || gallery.firstElementChild);
+    }
+
+    function showPreviousImage() {
+        showImage(currentImage.previousElementSibling || gallery.lastElementChild);
     }
 
     function handleClickOutside(event) {
