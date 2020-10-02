@@ -22,6 +22,17 @@ function Gallery(gallery) {
         modal.classList.add("open");
     }
 
+    function closeModal() {
+        modal.classList.remove("open");
+        // Add event listeners for clicks and keyboard
+    }
+
+    function handleClickOutside(event) {
+        if(event.target === event.currentTarget) {
+            closeModal();
+        }
+    }
+
     function showImage(el) {
         if(!el) {
             console.info("NO image to show");
@@ -45,7 +56,9 @@ function Gallery(gallery) {
     // images.forEach(image => image.addEventListener("click", handleImageClick))
 
     // Refactored- does same thing as above lines
-    images.forEach(image => image.addEventListener("click", (event) => showImage(event.currentTarget)))
+    images.forEach(image => image.addEventListener("click", (event) => showImage(event.currentTarget)));
+
+    modal.addEventListener("click", handleClickOutside);
 }
 
 const gallery1 = Gallery(document.querySelector(".gallery1"));
