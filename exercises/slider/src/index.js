@@ -8,9 +8,19 @@ function Slider(sliderEl) {
     let next;
 
     // Elements for slider
-    const slides = sliderEl.querySelectorAll("slides");
+    const slides = sliderEl.querySelector(".slides");
     const previousButton = document.querySelector(".goToPrev");
     const nextButton = document.querySelector(".goToNext");
+
+    function startSlider() {
+        current = sliderEl.querySelector(".current") || slides.firstElementChild;
+        previous = current.previousElementSibling || slides.lastElementChild;
+        next = current.nextElementSibling || slides.firstElementChild;
+        console.log({current, previous, next})
+    }
+
+    // When slider is created, run startSlider function
+    startSlider();
 }
 
 const mySlider = Slider(document.querySelector(".slider"));
