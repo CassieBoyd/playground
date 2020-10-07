@@ -19,8 +19,15 @@ function Slider(sliderEl) {
         console.log({current, previous, next})
     }
 
+    function applyClasses() {
+        current.classList.add("current");
+        previous.classList.add("previous");
+        next.classList.add("next");
+    }
+
     // When slider is created, run startSlider function
     startSlider();
+    applyClasses();
 }
 
 const mySlider = Slider(document.querySelector(".slider"));
