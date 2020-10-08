@@ -31,11 +31,23 @@ function Slider(sliderEl) {
         previous.classList.remove(...classesToRemove);
         current.classList.remove(...classesToRemove);
         next.classList.remove(...classesToRemove);
+        if(direction === "back") {
+            // Make a new array of the new values and destructure them over and into the previous, current and next variables.
+            [previous, current, next] = [previous.previousElementSibling, previous, current];
+        } else {
+            [previous, current, next] = [current, next, next.nextElementSibling];
+        }
+
+        applyClasses();
     }
 
     // When slider is created, run startSlider function
     startSlider();
     applyClasses();
+
+    // Event listeners
+    previousButton.addEventListener("click", () => move("back"));
+    nextButton.addEventListener("click", move);
 }
 
 const mySlider = Slider(document.querySelector(".slider"));
