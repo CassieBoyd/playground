@@ -25,6 +25,14 @@ function Slider(sliderEl) {
         next.classList.add("next");
     }
 
+    function move(direction) {
+        // Remove all classes from current slides
+        const classesToRemove = ["previous", "current", "next"];
+        previous.classList.remove(...classesToRemove);
+        current.classList.remove(...classesToRemove);
+        next.classList.remove(...classesToRemove);
+    }
+
     // When slider is created, run startSlider function
     startSlider();
     applyClasses();
