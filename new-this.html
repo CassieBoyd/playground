@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>New, This, Prototypes and Classes</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+    <script>
+        const myDate = new Date("October 31 2040");
+        console.dir(myDate);
+        console.dir(myDate.getFullYear());
+
+        const names = ["Cassie", "Ken"];
+        const cassie = { name: "Cassie" };
+
+        const names2 = new Array("Cassie", "Ken");
+        const ken = new Object({ name: "Ken" });
+
+        const span = document.createElement("span");
+        console.log(span);
+
+    function Pizza() {
+        console.log("Making pizza")
+    }
+
+    // new keyword creates a new object that is an instance of the function it's made from
+    const mushroomPizza = new Pizza();
+    console.log(mushroomPizza);
+    console.log("What made mushroomPizza", mushroomPizza.constructor);
+    // Returns true
+    console.log(mushroomPizza instanceof Pizza);
+
+    </script>
+</body>
+
+</html>
