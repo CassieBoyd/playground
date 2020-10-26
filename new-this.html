@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <button class="one">Button 1</button>
+    <button class="two">Button 2</button>
     <script>
         const myDate = new Date("October 31 2040");
         console.dir(myDate);
@@ -29,11 +31,20 @@
 
     // new keyword creates a new object that is an instance of the function it's made from
     const mushroomPizza = new Pizza();
-    console.log(mushroomPizza);
+    console.log(!mushroomPizza);
     console.log("What made mushroomPizza", mushroomPizza.constructor);
     // Returns true
     console.log(mushroomPizza instanceof Pizza);
 
+    const button1 = document.querySelector(".one");
+    const button2 = document.querySelector(".two");
+
+    function tellMeAboutTheButton() {
+        console.log(this);
+    }
+
+    button1.addEventListener("click", tellMeAboutTheButton);
+    button2.addEventListener("click", tellMeAboutTheButton);
     </script>
 </body>
 
