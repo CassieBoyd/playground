@@ -39,8 +39,15 @@
     const button1 = document.querySelector(".one");
     const button2 = document.querySelector(".two");
 
+    // "this" keyword is always scoped to a function
     function tellMeAboutTheButton() {
-        console.log(this);
+        console.log("Outside", this);
+
+        // Making the function for setTimeout allows the value of "this" to be inherited from tellMeAboutTheButton. If it were a named function "this" would be the window.
+        setTimeout(() => {
+            console.log("Inside", this);
+            this.textContent = "You clicked me!";
+        }, 1000);
     }
 
     button1.addEventListener("click", tellMeAboutTheButton);
