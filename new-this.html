@@ -25,12 +25,17 @@
         const span = document.createElement("span");
         console.log(span);
 
-    function Pizza() {
-        console.log("Making pizza")
+    function Pizza(toppings = [], customer) {
+        console.log("Making pizza");
+        // Save the toppings that were passed in to this instance of pizza
+        this.toppings = toppings;
+        this.customer = customer;
+        this.id = Math.floor(Math.random() * 16777215).toString(16);
     }
 
     // new keyword creates a new object that is an instance of the function it's made from
-    const mushroomPizza = new Pizza();
+    const mushroomPizza = new Pizza(["Pepperoni", "Mushrooms"], "Cassie Boyd");
+    const cheesePizza = new Pizza(["Cheddar"], "Ken Boyd");
     console.log(!mushroomPizza);
     console.log("What made mushroomPizza", mushroomPizza.constructor);
     // Returns true
