@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <button class="one">Button 1</button>
+    <button class="two">Button 2</button>
     <script>
         const myDate = new Date("October 31 2040");
         console.dir(myDate);
@@ -23,17 +25,38 @@
         const span = document.createElement("span");
         console.log(span);
 
-    function Pizza() {
-        console.log("Making pizza")
+    function Pizza(toppings = [], customer) {
+        console.log("Making pizza");
+        // Save the toppings that were passed in to this instance of pizza
+        this.toppings = toppings;
+        this.customer = customer;
+        this.id = Math.floor(Math.random() * 16777215).toString(16);
     }
 
     // new keyword creates a new object that is an instance of the function it's made from
-    const mushroomPizza = new Pizza();
-    console.log(mushroomPizza);
+    const mushroomPizza = new Pizza(["Pepperoni", "Mushrooms"], "Cassie Boyd");
+    const cheesePizza = new Pizza(["Cheddar"], "Ken Boyd");
+    console.log(!mushroomPizza);
     console.log("What made mushroomPizza", mushroomPizza.constructor);
     // Returns true
     console.log(mushroomPizza instanceof Pizza);
 
+    const button1 = document.querySelector(".one");
+    const button2 = document.querySelector(".two");
+
+    // "this" keyword is always scoped to a function
+    function tellMeAboutTheButton() {
+        console.log("Outside", this);
+
+        // Making the function for setTimeout allows the value of "this" to be inherited from tellMeAboutTheButton. If it were a named function "this" would be the window.
+        setTimeout(() => {
+            console.log("Inside", this);
+            this.textContent = "You clicked me!";
+        }, 1000);
+    }
+
+    button1.addEventListener("click", tellMeAboutTheButton);
+    button2.addEventListener("click", tellMeAboutTheButton);
     </script>
 </body>
 
