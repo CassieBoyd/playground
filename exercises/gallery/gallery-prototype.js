@@ -2,6 +2,7 @@ function Gallery(gallery) {
     if(!gallery) {
         throw new Error("No Gallery Found!");
     }
+    this.gallery = gallery;
 
     // Select elements we need
     // Put in an array so they can be looped over
@@ -96,5 +97,7 @@ function Gallery(gallery) {
     modal.addEventListener("click", handleClickOutside);
 }
 
-const gallery1 = Gallery(document.querySelector(".gallery1"));
-const gallery2 = Gallery(document.querySelector(".gallery2"));
+const gallery1 = new Gallery(document.querySelector(".gallery1"));
+const gallery2 = new Gallery(document.querySelector(".gallery2"));
+
+console.log(gallery1, gallery2);
