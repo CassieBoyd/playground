@@ -6,10 +6,11 @@ function Gallery(gallery) {
 
     // Select elements we need
     // Put in an array so they can be looped over
-    const images = Array.from(gallery.querySelectorAll("img"));
-    const modal = document.querySelector(".modal");
-    const prevButton = modal.querySelector(".prev");
-    const nextButton = modal.querySelector(".next");
+    // Changed const variables to this.variableName to surface the variables on an instance. Sets a property on the Gallery instance.
+    this.images = Array.from(gallery.querySelectorAll("img"));
+    this.modal = document.querySelector(".modal");
+    this.prevButton = modal.querySelector(".prev");
+    this.nextButton = modal.querySelector(".next");
     let currentImage;
 
     function openModal() {
