@@ -11,7 +11,33 @@ function Gallery(gallery) {
     this.modal = document.querySelector(".modal");
     this.prevButton = modal.querySelector(".prev");
     this.nextButton = modal.querySelector(".next");
-    let currentImage;
+
+    
+
+    //function handleImageClick(event) {
+    //    showImage(event.currentTarget);
+    //}
+
+    // Looping over images array and adding event listeners
+    // images.forEach(image => image.addEventListener("click", handleImageClick))
+
+    // Refactored- does same thing as above lines
+    this.images.forEach(image => image.addEventListener("click", (event) => showImage(event.currentTarget)));
+
+    // Loop over each image
+    this.images.forEach(image => {
+        // Add event listener on each image
+        image.addEventListener("keyup", event => {
+            // When keyUp is sensed, check if key was Enter
+            if(event.key === "Enter") {
+                // If it was, show that image
+                showImage(event.currentTarget);
+            }
+        })
+    })
+
+    modal.addEventListener("click", handleClickOutside);
+}
 
     function openModal() {
         console.info("Opening modal...");
@@ -69,33 +95,8 @@ function Gallery(gallery) {
         modal.querySelector("img").src = el.src;
         modal.querySelector("h2").textContent = el.title;
         modal.querySelector("figure p").textContent = el.dataset.description;
-        currentImage = el;
+        this.currentImage = el;
         openModal();
-    }
-
-    //function handleImageClick(event) {
-    //    showImage(event.currentTarget);
-    //}
-
-    // Looping over images array and adding event listeners
-    // images.forEach(image => image.addEventListener("click", handleImageClick))
-
-    // Refactored- does same thing as above lines
-    images.forEach(image => image.addEventListener("click", (event) => showImage(event.currentTarget)));
-
-    // Loop over each image
-    images.forEach(image => {
-        // Add event listener on each image
-        image.addEventListener("keyup", event => {
-            // When keyUp is sensed, check if key was Enter
-            if(event.key === "Enter") {
-                // If it was, show that image
-                showImage(event.currentTarget);
-            }
-        })
-    })
-
-    modal.addEventListener("click", handleClickOutside);
 }
 
 const gallery1 = new Gallery(document.querySelector(".gallery1"));
