@@ -55,7 +55,7 @@ function Gallery(gallery) {
         prevButton.addEventListener("click", showPreviousImage);
     }
 
-    function closeModal() {
+    Gallery.prototype.closeModal = function() {
         modal.classList.remove("open");
         // Add event listeners for clicks and keyboard
 
@@ -64,27 +64,27 @@ function Gallery(gallery) {
         prevButton.removeEventListener("click", showPreviousImage);
     }
 
-    function handleKeyUp(event) {
+    Gallery.prototype.handleKeyUp(event) {
         if(event.key === "Escape") return closeModal();
         if(event.key === "ArrowRight") return showNextImage();
         if(event.key === "ArrowLeft") return showPreviousImage();
     }
 
-    function showNextImage() {
+    Gallery.prototype.showNextImage = function() {
         showImage(currentImage.nextElementSibling || gallery.firstElementChild);
     }
 
-    function showPreviousImage() {
+    Gallery.prototype.showPreviousImage = function() {
         showImage(currentImage.previousElementSibling || gallery.lastElementChild);
     }
 
-    function handleClickOutside(event) {
+    Gallery.prototype.handleClickOutside = function(event) {
         if(event.target === event.currentTarget) {
             closeModal();
         }
     }
 
-    function showImage(el) {
+    Gallery.prototype.showImage = function(el) {
         if(!el) {
             console.info("NO image to show");
             return
