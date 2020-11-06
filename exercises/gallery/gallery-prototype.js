@@ -9,8 +9,8 @@ function Gallery(gallery) {
     // Changed const variables to this.variableName to surface the variables on an instance. Sets a property on the Gallery instance.
     this.images = Array.from(gallery.querySelectorAll("img"));
     this.modal = document.querySelector(".modal");
-    this.prevButton = modal.querySelector(".prev");
-    this.nextButton = modal.querySelector(".next");
+    this.prevButton = this.modal.querySelector(".prev");
+    this.nextButton = this.modal.querySelector(".next");
 
     
 
@@ -39,29 +39,29 @@ function Gallery(gallery) {
     this.modal.addEventListener("click", this.handleClickOutside);
 }
 
-    function openModal() {
+    Gallery.prototype.openModal = function() {
         console.info("Opening modal...");
 
         // Check if modal is already open
-        if(modal.matches(".open")) {
+        if(this.modal.matches(".open")) {
             console.info("Modal already open");
             return; // Stops function from running
         }
-        modal.classList.add("open");
+        this.modal.classList.add("open");
 
         // Event listeners to be bound when modal is opened
         window.addEventListener("keyup", this.handleKeyUp);
-        nextButton.addEventListener("click", this.showNextImage);
-        prevButton.addEventListener("click", this.showPreviousImage);
+        this.nextButton.addEventListener("click", this.showNextImage);
+        this.prevButton.addEventListener("click", this.showPreviousImage);
     }
 
     Gallery.prototype.closeModal = function() {
-        modal.classList.remove("open");
+        this.modal.classList.remove("open");
         // Add event listeners for clicks and keyboard
 
         window.removeEventListener("keyup", this.handleKeyUp);
-        nextButton.removeEventListener("click", this.showNextImage);
-        prevButton.removeEventListener("click", this.showPreviousImage);
+        this.nextButton.removeEventListener("click", this.showNextImage);
+        this.prevButton.removeEventListener("click", this.showPreviousImage);
     }
 
     Gallery.prototype.handleKeyUp(event) {
@@ -99,7 +99,8 @@ function Gallery(gallery) {
         this.openModal();
 }
 
-this.gallery1 = new Gallery(document.querySelector(".gallery1"));
-this.gallery2 = new Gallery(document.querySelector(".gallery2"));
+const gallery1 = new Gallery(document.querySelector(".gallery1"));
+const gallery2 = new Gallery(document.querySelector(".gallery2"));
 
 console.log(gallery1, gallery2);
+console.log("Hi")
